@@ -79,6 +79,9 @@ public class User {
 	
 	private List<Word> listOfTheMistakenWords;
 	
+	public User() {
+		
+	}
 
 	public User(String username, String password) {
 		super();

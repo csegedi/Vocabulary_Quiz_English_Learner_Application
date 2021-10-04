@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Quiz settings</title>
+	</head>
+	
+	<body>
+	
+		<form action="/user/quiz" method=post>
+		
+			<p>Select a category: </p>
+		
+				<select name="selectedCategory" >
+			
+					<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+			
+				</select>
+			
+		<br>
+		<br>
+		<br>
+		
+			<p>Set the level of the difficulty: </p>
+		
+				<select name="difficulty">
+	
+					<option th:each="difficulty_level:${T(Project.Vocabulary.Quiz_MVC.model.Difficulty_Level).values()}" th:text="${difficulty_level}" th:value="${difficulty_level}"> </option>
+			
+				</select>	
+				
+		<br>
+		<br>
+		<br>	
+		
+			<p>Set the initial language: </p>
+		
+				<select name="init">
+	
+					<option th:each="language:${T(Project.Vocabulary.Quiz_MVC.model.Language).values()}" th:text="${language}" th:value="${language}"> </option>
+			
+				</select>	
+		<br>
+		<br>
+				<button style="color:red" type="submit">START!</button>
+			
+			</form>
+
+	</body>
+	
+</html>

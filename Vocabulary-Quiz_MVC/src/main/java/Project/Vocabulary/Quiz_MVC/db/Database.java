@@ -137,6 +137,29 @@ public class Database {
 		
 	}
 	
+	
+	public List<User> getUserByNameAndPassword(String username, String password) {
+		
+		Session session=sessionFactory.openSession(); 
+		session.beginTransaction(); 
+		
+		List<User> users=null; 
+		
+		Query query=session.createNativeQuery("SELECT * FROM user WHERE username =:incomingName AND password=:incomingPassword", User.class); 
+		query.setParameter("incomingName", username); 
+		query.setParameter("incomingPassword", password); 
+		users=query.getResultList(); 
+		
+		session.getTransaction(); 
+		session.close();
+		
+		
+		return users;
+	}
+	
+	
+	
+	
 	public void insertUser(String username, String password, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) {
 		
 		Session session=sessionFactory.openSession(); 
@@ -213,6 +236,8 @@ public class Database {
 		
 		sessionFactory.close();
 	}
+
+	
 
 	
 

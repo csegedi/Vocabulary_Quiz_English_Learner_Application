@@ -168,6 +168,7 @@ public class AdminController {
 	
 	/**CORRECTING OR UPDATE THE EARLIER GIVEN WORDS AND EXPRESSIONS*/
 	
+	//Select a category
 	@PostMapping ("/admin/change")
 	public String updateSelect(Model model,
 			@RequestParam (name="selectedCategory") int categoryId) {
@@ -176,7 +177,6 @@ public class AdminController {
 		
 		List<Word>words=db.getTheWordByCategoryId(categoryId); 
 		
-		
 		model.addAttribute("wordsList", words); 
 		model.addAttribute("category_id", categoryId); 
 		
@@ -184,6 +184,7 @@ public class AdminController {
 		
 	}
 	
+	//Select a word and insert a modified value
 	@PostMapping("/admin/change/selected")
 	public String updateSelectedWord (Model model, 
 			@RequestParam (name="wordId") int wordId,
@@ -202,6 +203,7 @@ public class AdminController {
 			}
 		}
 		
+		
 		if ( (word!=null) && categorySign==true ) {
 			
 			model.addAttribute("word", word); 
@@ -219,6 +221,7 @@ public class AdminController {
 		
 	}
 	
+	//Update the word in the database
 	@PostMapping ("/admin/change/selected/completed")
 	public String updateSelectedWordExecut(Model model,
 			@RequestParam (name="wordId") Integer wordId,

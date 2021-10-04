@@ -14,6 +14,7 @@
   <mapping class="Project.Vocabulary.Quiz_MVC.model.Difficulty_Level"/>
   <mapping class="Project.Vocabulary.Quiz_MVC.model.User"/>
   <mapping class="Project.Vocabulary.Quiz_MVC.model.Word"/>
+    <mapping class="Project.Vocabulary.Quiz_MVC.model.Language"/>
  
 
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>User Main Page</title>
+	</head>
+	
+	<body>
+	
+		<h2 style="text-align:center" >Welcome! </h2>
+		
+			<br>
+			<br>
+			
+		<form action="/user/settings" method="post">
+				
+			<button style="color:red" type="submit">Start a new Quiz!</button>
+				
+		</form>	
+		
+			<br>
+			<br>
+		
+		
+			<h3 style="color:red" th:text="${user.username}"></h3>
+				<h5>Your statistics:</h5>
+				
+					<p>Points of PhrasalVerbs-Challenge: </p>
+						<p th:text="${user.phrasalVerbPoints}" ></p>
+	
+					<p>Points of Collocation-Challenge: </p>
+						<p th:text="${user.collocationsPoints}" ></p>
+							
+					<p>Points of Nouns-Challenge: </p>
+						<p th:text="${user.nounsPoints}" ></p>
+							
+					<p>Points of Adjectives-Challenge: </p>
+						<p th:text="${user.adjectivesPoints}" ></p>
+							
+					<p>Points of Sentences-Challenge: </p>
+						<p th:text="${user.sentencesPoints}" ></p>
+							
+					<p>Points of Adverbs-Challenge: </p>
+						<p th:text="${user.adverbsPoints}" ></p>
+							
+					<p>Points of Informatic-Vocabulary-Challenge: </p>
+						<p th:text="${user.informaticVocabularyPoints}" ></p>
+						<br>
+						<br>
+						<br>
+						
+					<p>Number of all attempts: </p>	
+						<p th:text="${user.attempts}" ></p>
+							<br>
+					<p>Number of all wins: </p>
+						<p th:text="${user.wins}"></p>
+							<br>
+					<p>Number of all failed attempts: </p>
+					<p th:text="${user.lost}"></p>
+					
+					<br>
+					<br>
+					<br>
+					
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+					<br>
+				
+				<button type="submit">exit</button>
+				
+			</form>
+				
+	
+	</body>
+
+</html>
