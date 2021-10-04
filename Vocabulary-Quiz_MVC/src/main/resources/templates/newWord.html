@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>New word has been added!</title>
+	</head>
+	
+	<body>
+	
+		<h4 style="text-align:center" >New word has been inserted into the database!</h4>
+	
+			<p>The inserted word is the following: </p>
+				<p th:text="${word.english}" ></p>
+				<p th:text="${word.hungarian}"></p>
+				<p th:text="${word.example}"></p>
+				
+					<br>
+					<br>
+					
+			<form action="/admin" method="post">
+				
+				<p>Click here to back:</p>
+					
+					<br>
+				
+				<button type="submit">Back</button>
+					
+			</form>	
+			
+					<br>
+					<br>
+				
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+					<br>
+				
+				<button type="submit">Exit</button>
+			
+			</form>
+			
+	</body>
+	
+</html>

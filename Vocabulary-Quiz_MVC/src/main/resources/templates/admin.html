@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Admin</title>
+	</head>
+	
+	<body>
+	
+	<h3>Here you can add new words:</h3>
+	
+		<form action="/admin/insert" method=post>
+		
+			<p>English:</p>
+				<input type="text" name="english"  >
+			<p>Hungarian:</p>
+				<input type="text" name="hungarian">
+			<p>Example Sentence:</p>
+				<input type="text" name="example">
+				
+			<select name="selectedCategory" >
+			
+				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+			
+			</select>
+			
+			<input type="submit">
+			
+		</form>
+		
+	<h3>Here you can change the data:</h3>
+		<p>To modification you have to select the category:</p>
+		
+			<form action="/admin/change" method="post" >
+			
+				<select name="selectedCategory" >
+			
+				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+			
+			</select>
+			
+			<input type="submit">
+			
+			</form>
+			
+			<br>
+			<br>
+			
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+					<br>
+				
+				<button type="submit">exit</button>
+				
+			</form>
+			
+
+	</body>
+	
+</html>

@@ -78,6 +78,27 @@ public class User {
 			)
 	
 	private List<Word> listOfTheMistakenWords;
+	
+
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.phrasalVerbPoints = 0;
+		this.collocationsPoints = 0;
+		this.nounsPoints = 0;
+		this.adjectivesPoints = 0;
+		this.sentencesPoints = 0;
+		this.adverbsPoints = 0;
+		this.informaticVocabularyPoints = 0;
+		this.rightAnswersCounter = 0;
+		this.wrongAnswersCounter = 0;
+		this.lives = 3;
+		this.attempts = 0;
+		this.wins = 0;
+		this.lost = 0;
+		this.listOfTheMistakenWords = null;
+	}
 
 	public int getId() {
 		return id;

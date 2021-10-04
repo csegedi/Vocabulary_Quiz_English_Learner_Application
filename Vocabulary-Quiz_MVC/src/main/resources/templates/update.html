@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Update!</title>
+	</head>
+	
+	<body>
+	
+		<table>
+		
+			<th>Id</th>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example Sentence</th>
+			
+			<tr th:each="words: ${wordsList}">
+				
+				<td th:text="${words.id}"></td>
+				<td th:text="${words.english}"></td>
+				<td th:text="${words.hungarian}"></td>
+				<td th:text="${words.example}"></td>
+			
+			</tr>
+	
+		</table>
+		
+			<br>
+			<br>
+		
+		<form action="/admin/change/selected" method="post" >
+		
+			<p>Please insert the id number of the words above!</p>
+		
+				<input type="number" name="wordId">
+				<input type="hidden" name="selectedCategory" th:value="${category_id}"  >
+				<input type="submit" >
+			
+		</form>
+		
+			<br>
+			<br>
+		
+		<form action="/admin" method="post">
+				
+			<p>Click here to step back:</p>
+					
+				<br>
+				
+			<button type="submit">Back</button>
+			
+		</form>
+		
+			<br>
+			<br>
+		
+		<form action="/" method="get">
+				
+			<p>Click here to exit:</p>
+					
+				<br>
+				
+			<button type="submit">exit</button>
+				
+		</form>
+
+		
+	</body>
+
+</html>

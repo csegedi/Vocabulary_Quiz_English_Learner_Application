@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>Vocabulary Quiz: Main Page</title>
+		
+	</head>
+	
+	
+	<body>
+	
+		<h2 style="text-align:center" >Wellcome!</h2>
+			<br>
+		<h3 style="text-align:center">This is the Vocabulary-Quiz! You can use this application to improve your English. </h3>
+			<br>
+		<h4>The current size of the application's vocabulary: </h4>
+		
+			<p th:text="${allWords}" ></p>
+				<br>
+		
+		<h4>The actual categories of the words are the following: </h4>
+		
+	
+		<table  style="float: left"  >
+		
+			<th>Category name</th>
+			
+			<tr th:each="categories:${categoryList}">
+			
+				<td th:text="${categories.category_name}" ><td>
+			
+			<tr/>
+
+		</table>
+		
+		
+		<table style="float: left" >
+		
+			<th>Number of the words</th>
+		
+			<tr th:each="list:${numberOftheWords}">
+				<td th:text="${list}"></td>
+			
+			</tr>
+			
+		</table>
+	
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+		<h4 style="color:blue" >Please select:</h4>
+			
+				<form action="/login" method="post">
+				
+					<button type="submit">login</button>
+				
+				</form>
+				
+					<br>
+					<br>
+				
+				<form action="/signIn" method="get">
+				
+					<button type="submit">Create an account</button>
+				
+				</form>
+				
+					<br>
+					<br>
+				
+				<form action="/categories" method="post">
+				
+					<button style="color:red" type="submit">Open the vocabulary</button>
+					
+					<br>
+					<br>
+					<br>
+					<br>
+				
+				</form>
+				
+					<form action="/adminLogin" method="get">
+				
+					<button  type="submit">Admin</button>
+				
+				</form>
+	
+	</body>
+</html>

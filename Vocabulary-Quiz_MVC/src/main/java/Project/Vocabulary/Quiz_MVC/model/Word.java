@@ -29,8 +29,8 @@ public class Word {
 	private String example; 
 	
 	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name="categoryId")
-	private int categoryId;
+	@JoinColumn (name="categoryID")
+	private Category categoryId;
 
 	public int getId() {
 		return id;
@@ -64,13 +64,15 @@ public class Word {
 		this.example = example;
 	}
 
-	public int getCategoryId() {
+	public Category getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Category categoryId) {
 		this.categoryId = categoryId;
-	} 
+	}
+
+
 	
 
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Update was successful!</title>
+	</head>
+	
+	<body>
+	
+		<h4>The modification is completed!</h4>
+		
+			<br>
+			<br>
+	
+		<h5>The new data are the following: </h5>
+		
+			<p th:text="${updatedWord.english}"></p>
+			<p th:text="${updatedWord.hungarian}"></p>
+			<p th:text="${updatedWord.example}"></p>
+				
+				<br>
+				<br>
+			
+			<form action="/admin" method="post">
+				
+				<p>Click here to step back:</p>
+					
+				<br>
+				
+				<button type="submit">Back</button>
+			
+			</form>
+		
+				<br>
+				<br>
+		
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+				<br>
+				
+			<button type="submit">exit</button>
+				
+			</form>
+			
+			
+	
+	</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert your requested modifications</title>
+	</head>
+	
+	<body>
+	
+		<form action="/admin/change/selected/completed" method="post">
+	
+	 		<p th:text="${word.english}" ></p>
+	 			<br>
+	 			<input type="text" name="newEnglish" >
+	 			<input type="hidden" name="wordId" th:value="${word.id}" > 
+	 			<input type="submit">
+	 			<br>
+	 			<br>
+	 			
+	 		<p th:text="${word.hungarian}" ></p>
+	 			<br>
+	 			<input type="text" name="newHungarian" >
+	 			<input type="hidden" name="wordId" th:value="${word.id}" > 
+	 			<input type="submit">
+	 			
+	 			<br>
+	 			<br>
+	 			
+	 		<p th:text="${word.example}" ></p>
+	 			<br>
+	 			<input type="text" name="newExample" >
+	 			<input type="hidden" name="wordId" th:value="${word.id}">
+	 			<input type="submit">
+	 			 
+	 			<br>
+	 			<br>
+	 			
+	 	</form>		
+	 	
+	 		<br>
+	 		<br>
+	 	
+	 	<form action="/admin" method="post">
+				
+			<p>Click here to step back:</p>
+					
+				<br>
+				
+			<button type="submit">Back</button>
+			
+		</form>
+		
+			<br>
+			<br>
+		
+		<form action="/" method="get">
+				
+			<p>Click here to exit:</p>
+					
+				<br>
+				
+			<button type="submit">exit</button>
+				
+		</form>
+	 			
+	
+	</body>
+	
+	
+
+</html>
