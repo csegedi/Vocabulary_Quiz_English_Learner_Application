@@ -8,7 +8,30 @@
 	<body>
 	
 		<form action="/user/quiz" method=post>
+	
+			<h5>Description:</h5>
+				<p>There are three levels of difficulty:</p>
+				<p>EASY: You have 20 seconds to answer the questions.</p>
+				<p>MEDIUM: You have 15 seconds to answer the question.</p>
+				<p>HARD: You have 10 seconds to answer the question.</p>
+				<br>
+				<p>If you will be slow, you will lost one life. </p>
+				
+				<br>
+				<br>
 		
+			<p>Set the level of the difficulty: </p>
+		
+				<select name="difficulty">
+	
+					<option th:each="difficulty_level:${T(Project.Vocabulary.Quiz_MVC.model.Difficulty_Level).values()}" th:text="${difficulty_level}" th:value="${difficulty_level}"> </option>
+					
+				</select>
+
+		
+				<br>
+				<br>
+	
 			<p>Select a category: </p>
 		
 				<select name="selectedCategory" >
@@ -17,22 +40,10 @@
 			
 				</select>
 			
-		<br>
-		<br>
-		<br>
-		
-			<p>Set the level of the difficulty: </p>
-		
-				<select name="difficulty">
-	
-					<option th:each="difficulty_level:${T(Project.Vocabulary.Quiz_MVC.model.Difficulty_Level).values()}" th:text="${difficulty_level}" th:value="${difficulty_level}"> </option>
+				<br>
+				<br>
+				<br>
 			
-				</select>	
-				
-		<br>
-		<br>
-		<br>	
-		
 			<p>Set the initial language: </p>
 		
 				<select name="init">
@@ -42,9 +53,36 @@
 				</select>	
 		<br>
 		<br>
+				
 				<button style="color:red" type="submit">START!</button>
+				
 			
 			</form>
+			
+			<form action="/user/" method="post">
+				
+				<p>Click here to step back:</p>
+					
+				<br>
+				
+				<button type="submit">Back</button>
+			
+			</form>
+			
+				<br>
+				<br>
+			
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+				<br>
+				
+				<button type="submit">Exit</button>
+			
+			</form>
+			
+			
 
 	</body>
 	

@@ -158,37 +158,44 @@ public class Database {
 	}
 	
 	
+	public User getUserById(int id) {
+			
+		Session session=sessionFactory.openSession(); 
+		session.beginTransaction(); 
+				
+		User user=session.get(User.class, id); 
+				
+		session.getTransaction().commit();
+		session.close(); 
+
+		return user;
+	}
 	
 	
-	public void insertUser(String username, String password, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) {
+	public void updateUser(User user) {
 		
 		Session session=sessionFactory.openSession(); 
 		session.beginTransaction(); 
 		
-		Query query=session.createNativeQuery("INSERT INTO user (username, password, phrasalVerbsPoints,"
-				+ " collocationsPoints, nounsPoints, adjectivesPoints, "
-				+ "sentencesPoints, adverbsPoints, informaticVocabularyPoints, attempts, wins, lost ) "
-				+ "VALUES (:newUsername, :newPassword, :newPhV, :newColl, :newNouns, :newAdj, :newSen, :newAdv, :newInfo,"
-				+ ":newAttempts, :newWins, :newLost )"); 
+		session.update(user);
 		
-		query.setParameter("newUsername", username); 
-		query.setParameter("newPassword", password); 
-		query.setParameter("newPhV", a); 
-		query.setParameter("newColl", b); 
-		query.setParameter("newNouns", c); 
-		query.setParameter("newAdj", d); 
-		query.setParameter("newSen", e); 
-		query.setParameter("newAdv", f); 
-		query.setParameter("newInfo", g); 
-		query.setParameter("newAttempts", h); 
-		query.setParameter("newWins", i); 
-		query.setParameter("newLost", j);
-		
-		query.executeUpdate(); 
-	
-		session.getTransaction(); 
+		session.getTransaction().commit();
 		session.close();
+		
 	}
+	
+	public void saveUser(User user) {
+		
+		Session session=sessionFactory.openSession(); 
+		session.beginTransaction(); 
+		
+		session.save(user); 
+		
+		session.getTransaction().commit();
+		session.close();
+
+	}
+
 	
 	public List <Admin> getTheAdmin(String username, String password){
 		
@@ -230,12 +237,36 @@ public class Database {
 
 	}
 	
-	
-	
+	public void insertMistakenWord(int userId, int wordId) {
+		
+		Session session=sessionFactory.openSession(); 
+		session.beginTransaction(); 
+		
+		Query query=session.createNativeQuery("INSERT INTO mistakenwords (user_id, word_id) VALUES(:newUserId, :newWordId)" ); 
+		
+		query.setParameter("newUserId", userId); 
+		query.setParameter("newWordId", wordId); 
+		 
+		query.executeUpdate(); 
+		
+		session.getTransaction(); 
+		session.close();
+		
+	}
+		
 	public void close() {
 		
 		sessionFactory.close();
 	}
+
+	
+
+	
+
+	
+
+	
+
 
 	
 

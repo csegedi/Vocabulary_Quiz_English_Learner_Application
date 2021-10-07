@@ -7,7 +7,19 @@
 	
 	<body>
 	
-	<p th:text="${quizWord}"></p>
+		<p th:text="${quizWord}"></p>
+		
+			<br>
+				
+				<p>Your answer:</p>
+			
+					<form action="/user/quiz/solution" method="post">
+			
+					<input type="text"  name="answer">
+					<input type="hidden" name="wordFromQuiz", th:value="${quizWord}" >
+					<input type="submit">
+			
+					</form>
 	
 	
 	</body>

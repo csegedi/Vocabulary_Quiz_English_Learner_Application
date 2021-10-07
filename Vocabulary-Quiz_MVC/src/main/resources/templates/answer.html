@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Correct Answer!</title>
+	</head>
+	
+	<body>
+	
+		<h5 th:text="${text}" ></h5>
+		
+			<p>Your answer:</p>
+			<p th:text="${answer}" ></p>
+		
+			<p th:text="${word.english}"  ></p>
+			<p th:text="${word.hungarian}"  ></p>
+			<p th:text="${word.example}"  ></p>
+			
+			
+			<form action="/user/quiz" method="post">
+				
+				<p>Click here to step back:</p>
+					
+				<br>
+				
+				<button type="submit">Back</button>
+			
+			</form>
+			
+				<br>
+				<br>
+			
+			<form action="/" method="get">
+				
+				<p>Click here to exit:</p>
+					
+				<br>
+				
+				<button type="submit">Exit</button>
+			
+			</form>
+	
+	
+	</body>
+	
+</html>
