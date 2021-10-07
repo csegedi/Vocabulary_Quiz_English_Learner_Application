@@ -19,6 +19,12 @@ import javax.persistence.Transient;
 @Table (name="user")
 public class User {
 	
+	@Transient
+	private final int initQuestionCounter=10; 
+	
+	@Transient
+	private final int initNumberOfLives=3; 
+	
 	@Id
 	@Column (name="id")
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -99,8 +105,8 @@ public class User {
 		this.attempts = 0;
 		this.wins = 0;
 		this.lost = 0;
-		this.lives=3; 
-		this.actualQuestions=10; 
+		this.lives=initNumberOfLives; 
+		this.actualQuestions=initQuestionCounter; 
 		this.listOfTheMistakenWords = null;
 	}
 
@@ -197,12 +203,6 @@ public class User {
 		this.attempts++; 
 
 	}
-
-	public void lostIncrease() {
-		
-		this.lost++; 
-		
-	} 
 	
 	public void rightAnswerIncrease() {
 		
@@ -234,11 +234,6 @@ public class User {
 			this.informaticVocabularyPoints++; 
 		}
 		
-		
-	}
-
-	public void winIncrease() {
-		this.wins++; 
 	}
 
 	public void LivesDecrease() {
@@ -250,6 +245,27 @@ public class User {
 	public void actualQuestionNumbersDecrease() {
 		
 		this.actualQuestions--; 
+		
+	}
+
+	public void FailedQuizUpdate() {
+		
+		attemptsIncrease(); 
+		this.actualQuestions=initQuestionCounter; 
+		this.setRightAnswersCounter(0);
+		this.setLives(initNumberOfLives);
+		this.lost++; 
+		
+	}
+
+	public void WinnerQuizUpdate( int id) {
+		
+		pointsIncrease (id); 
+		attemptsIncrease(); 
+		this.wins++; 
+		this.actualQuestions=initQuestionCounter; 
+		this.setLives(initNumberOfLives);
+		this.setRightAnswersCounter(0);
 		
 	}
 

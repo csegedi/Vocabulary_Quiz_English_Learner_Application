@@ -96,9 +96,6 @@ public class QuizController {
 			response.addCookie(cookieTime);
 		}
 
-		// Examination of the "time" cookie: In this method start the period of this
-		// cookie.
-
 		List<Word> words = db.getTheWordByCategoryId(categoryInteger);
 
 		maxRandomNumber = words.size();
@@ -133,11 +130,13 @@ public class QuizController {
 
 	@PostMapping("/user/quiz/solution")
 	public String solution(Model model,
-			@CookieValue(required = false, name = "cookie_userId") String cookie_userId,
-			@CookieValue(required = false, name = "cookie_WordId") String cookie_WordId,
-			@CookieValue(required = false, name = "cookie_categoryId") String cookie_categoryId,
-			@RequestParam(name = "answer") String answer, @RequestParam(name = "wordFromQuiz") String wordFromQuiz,
-			HttpServletRequest request, HttpServletResponse response) {
+		@CookieValue(required = false, name = "cookie_userId") String cookie_userId,
+		@CookieValue(required = false, name = "cookie_WordId") String cookie_WordId,
+		@CookieValue(required = false, name = "cookie_categoryId") String cookie_categoryId,
+		@RequestParam(name = "answer") String answer,
+		@RequestParam(name = "wordFromQuiz") String wordFromQuiz,
+		HttpServletRequest request,
+		HttpServletResponse response) {
 
 		Database db = new Database();
 		String returnPage = null;
@@ -232,9 +231,9 @@ public class QuizController {
 			text = "Your time is out!!";
 
 			model.addAttribute("word", word);
-			db.insertMistakenWord(user.getId(), word.getId());
 			model.addAttribute("answer", answer);
 			model.addAttribute("text", text);
+			
 			returnPage = "answer.html";
 		}
 
@@ -243,13 +242,8 @@ public class QuizController {
 		if ((user.getActualQuestions() == 0) && (user.getLives() > 0)) {
 
 			String victory = "You have completed the quiz!";
-
-			user.pointsIncrease(categoryId);
-			user.winIncrease();
-			user.attemptsIncrease();
-			user.setActualQuestions(10);
-			user.setRightAnswersCounter(0);
-			user.setLives(3);
+			
+			user.WinnerQuizUpdate(categoryId); 
 
 			model.addAttribute("text", victory);
 			returnPage = "quizCompleted.html";
@@ -259,12 +253,8 @@ public class QuizController {
 		else if (user.getLives() == 0) {
 
 			String lost = "You have failed the quiz!";
-
-			user.lostIncrease();
-			user.attemptsIncrease();
-			user.setActualQuestions(10);
-			user.setRightAnswersCounter(0);
-			user.setLives(3);
+			
+			user.FailedQuizUpdate(); 
 
 			model.addAttribute("text", lost);
 			returnPage = "quizCompleted.html";
