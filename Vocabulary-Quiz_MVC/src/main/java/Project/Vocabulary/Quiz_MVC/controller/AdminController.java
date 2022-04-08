@@ -43,16 +43,13 @@ public class AdminController {
 
 		List<Category> categories = db.getAllCategory();
 		ArrayList<Integer> piecesOfWords = new ArrayList<Integer>();
-
 		int vocabularySize = 0;
 
 		// collecting of the size of the categories
 
 		for (int i = 1; i <= categories.size(); i++) {
-			int assistant = 0;
 			List<Word> words = db.getTheWordByCategoryId(i);
-			assistant = words.size();
-			piecesOfWords.add(assistant);
+			piecesOfWords.add(words.size());
 
 		}
 

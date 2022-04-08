@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>QUIZZZZZ!!!</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>QUIZZZZZ!!!</title>
+</head>
+
+<body>
+	<p th:text="${quizWord}"></p>
+	<br>
 	
-	<body>
-	
-		<p th:text="${quizWord}"></p>
 		
-			<br>
-				
-				<p>Your answer:</p>
-			
-					<form action="/user/quiz/solution" method="post">
-			
-					<input type="text"  name="answer">
-					<input type="hidden" name="wordFromQuiz", th:value="${quizWord}" >
-					<input type="submit">
-			
-					</form>
 	
 	
-	</body>
+	
+	<form action="/user/quiz/solution" method="post">
+	<input type="radio" id="index0" name="index" th:value="${generatedFourWords.get(0)}" >
+	<label  th:text="${generatedFourWords.get(0)}" for="index0"></label><br>
+	<input type="radio" id="index1" name="index" th:value="${generatedFourWords.get(1)}" >
+	<label  th:text="${generatedFourWords.get(1)}" for="index1"></label><br>
+	<input type="radio" id="index2" name="index" th:value="${generatedFourWords.get(2)}" >
+	<label  th:text="${generatedFourWords.get(2)}" for="index2"></label><br>
+	<input type="radio" id="index3" name="index" th:value="${generatedFourWords.get(3)}" >
+	<label  th:text="${generatedFourWords.get(3)}" for="index3"></label><br>
+	<input type="hidden" name="wordFromQuiz" th:value="${quizWord}" >
+	<input type="submit" value="Submit">
+	</form>
+	
+</body>
 
 </html>

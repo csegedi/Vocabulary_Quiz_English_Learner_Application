@@ -1,5 +1,6 @@
 package Project.Vocabulary.Quiz_MVC.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class QuizController {
 
 	/** QUIZ SETTINGS */
 
-	// I: Setting the difficulty level, the quiz:
+	// Setting the difficulty level, the category and the initial language of the quiz:
 
 	@PostMapping("/user/settings")
 	public String initSettings(Model model) {
@@ -56,6 +57,8 @@ public class QuizController {
 		Integer categoryInteger = null;
 		String wordToQuiz = null;
 		int maxRandomNumber = 0;
+		Word word=null;  
+		Word pickedWord=null; 
 
 		if (categoryId != null) {
 			categoryInteger = categoryId;
@@ -74,10 +77,10 @@ public class QuizController {
 			int formatted_CookieCatId = Integer.parseInt(cookie_categoryId);
 			categoryInteger = formatted_CookieCatId;
 		}
-
+		
+		// The period of the cookie ("timer) will define the difficulty level:
+		
 		Cookie cookieTime = new Cookie("timer", "x");
-
-		// The period of the cookie ("time) will define the difficulty level:
 
 		if ((difficulty_Level != null && difficulty_Level.equals(Difficulty_Level.EASY.toString()))
 				|| (cookie_difficulty_Level != null
@@ -97,24 +100,47 @@ public class QuizController {
 		}
 
 		List<Word> words = db.getTheWordByCategoryId(categoryInteger);
-
+		ArrayList<Word>generatedWordsList=new ArrayList<Word>();
 		maxRandomNumber = words.size();
-		Word word = words.get(new Random().nextInt(maxRandomNumber));
-		Integer wordId = word.getId();
+		
+		while (generatedWordsList.size()!=4) {
+			word = words.get(new Random().nextInt(maxRandomNumber));
+			if (generatedWordsList.contains(word)==false) {
+				generatedWordsList.add(word); 
+			}
+		}
+		
+		int numberOfThePickedWord=new Random ().nextInt(3)+1;
+		pickedWord=generatedWordsList.get(numberOfThePickedWord); 
+
+		Integer wordId = pickedWord.getId();
 		String formatted_CookieWordId = wordId.toString();
 
-		Cookie cookie3 = new Cookie("cookie_WordId", formatted_CookieWordId);
-		response.addCookie(cookie3);
+		Cookie cookie4 = new Cookie("cookie_WordId", formatted_CookieWordId);
+		response.addCookie(cookie4);
+	
 
 		if (((initLanguage != null && initLanguage.equals(Language.ENGLISH.toString()))
 				|| (cookie_initLangue != null && cookie_initLangue.equals(Language.ENGLISH.toString())))) {
 
-			wordToQuiz = word.getEnglish();
-
+			wordToQuiz = pickedWord.getEnglish();
+			ArrayList<String> hungarianWords=new ArrayList<String>(); 
+			
+			for (int i=0; i<generatedWordsList.size(); i++) {
+				hungarianWords.add(generatedWordsList.get(i).getHungarian()); 
+			}
+			model.addAttribute("generatedFourWords", hungarianWords); 
 		}
 
 		else {
-			wordToQuiz = word.getHungarian();
+			wordToQuiz = pickedWord.getHungarian();
+			ArrayList<String>englishWords=new ArrayList<String>(); 
+			
+			for (int i=0; i<generatedWordsList.size(); i++) {
+				englishWords.add(generatedWordsList.get(i).getEnglish()); 
+			}
+			model.addAttribute("generatedFourWords",englishWords); 
+			
 		}
 
 		model.addAttribute("quizWord", wordToQuiz);
@@ -125,15 +151,18 @@ public class QuizController {
 
 		db.close();
 
-		return returnPage;
+		return returnPage; 
 	}
+	
+	/**QUIZ: EVAULATION OF THE ANSWERS*/
 
 	@PostMapping("/user/quiz/solution")
 	public String solution(Model model,
+		@CookieValue(required = false, name = "cookie_difficulty_Level") String cookie_difficulty_Level,
 		@CookieValue(required = false, name = "cookie_userId") String cookie_userId,
 		@CookieValue(required = false, name = "cookie_WordId") String cookie_WordId,
 		@CookieValue(required = false, name = "cookie_categoryId") String cookie_categoryId,
-		@RequestParam(name = "answer") String answer,
+		@RequestParam(required = false, name= "index") String answer,
 		@RequestParam(name = "wordFromQuiz") String wordFromQuiz,
 		HttpServletRequest request,
 		HttpServletResponse response) {
@@ -143,7 +172,6 @@ public class QuizController {
 		String text = null;
 
 		int categoryId = Integer.parseInt(cookie_categoryId);
-		List<Category> categories = db.getAllCategory();
 
 		int userId = Integer.parseInt(cookie_userId);
 		User user = db.getUserById(userId);
@@ -163,10 +191,11 @@ public class QuizController {
 			}
 		}
 
-		if (incomingTimer != null) {
+		if ((incomingTimer != null) && (answer!=null)) {
 			// checking if the starter language is the English
 			if (word.getEnglish().equals(wordFromQuiz)) {
-				if (word.getHungarian().contains(answer) && answer.isEmpty() == false) {
+				
+				if (word.getHungarian().contains(answer))  {
 
 					user.rightAnswerIncrease();
 					text = "Correct!";
@@ -193,9 +222,9 @@ public class QuizController {
 			}
 
 			// checking if the starter language is the Hungarian
-			else if (word.getHungarian().equals(wordFromQuiz)) {
+			else if (word.getHungarian().equals(wordFromQuiz) ) {
 
-				if (word.getEnglish().contains(answer) && answer.isEmpty() == false) {
+				if (word.getEnglish().contains(answer) ) {
 
 					user.rightAnswerIncrease();
 					text = "Correct!";
@@ -206,7 +235,7 @@ public class QuizController {
 
 					returnPage = "answer.html";
 				}
-
+				
 				else {
 
 					db.insertMistakenWord(user.getId(), word.getId());
@@ -223,6 +252,15 @@ public class QuizController {
 			}
 
 		} 
+		else if (answer==null) {
+			user.LivesDecrease(); 
+			text="You have not given any answer!"; 
+			String none="none"; 
+			model.addAttribute("word", word);
+			model.addAttribute("answer", none);
+			model.addAttribute("text", text);
+			returnPage="answer.html"; 
+		}
 		
 		else {
 
@@ -236,6 +274,8 @@ public class QuizController {
 			
 			returnPage = "answer.html";
 		}
+		
+		//The variation of the ending of the game: 
 
 		user.actualQuestionNumbersDecrease();
 
