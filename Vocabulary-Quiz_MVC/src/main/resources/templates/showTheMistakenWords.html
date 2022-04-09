@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table>
+
+<tr>
+<th>English</th>
+<th>Hungarian</th>
+<th>Example</th>
+</tr>
+
+<tr th:each=mistakenWords:${mistakenWordList} >
+
+	<td th:text="${mistakenWords.english}" > </td>
+	<td th:text="${mistakenWords.hungarian}"></td>
+	<td th:text="${mistakenWords.example}"></td>
+	<td>
+	<form action=/user/mistakenWords/remove method="post">
+	
+	<button type="submit">Okay, I have learned this word</button>
+	<input type="hidden" th:value="${mistakenWords.id}" name="wordID">
+	
+	</form>
+	</td>
+</tr>
+</table>
+<br>
+<br>
+
+<form action="/user" method="post">
+	<button type="submit">Back</button>
+</form>	
+	
+</body>
+
+</html>

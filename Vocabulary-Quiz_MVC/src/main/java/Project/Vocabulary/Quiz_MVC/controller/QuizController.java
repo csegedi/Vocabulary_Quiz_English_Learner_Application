@@ -283,7 +283,9 @@ public class QuizController {
 
 			String victory = "You have completed the quiz!";
 			
-			user.WinnerQuizUpdate(categoryId); 
+			
+			user.WinnerQuizUpdate(categoryId, cookie_difficulty_Level); 
+			
 
 			model.addAttribute("text", victory);
 			returnPage = "quizCompleted.html";
@@ -306,6 +308,47 @@ public class QuizController {
 
 		return returnPage;
 
+	}
+	
+	@PostMapping ("/user/mistakenWords")
+	public String mistakenWords (@CookieValue (required = false, name = "cookie_userId") String cookie_userId,
+			@CookieValue(required = false, name = "cookie_WordId") String cookie_WordId,
+			Model model) {
+		
+		String returnPage=null; 
+		Database db=new Database(); 
+		int formattedUserId=Integer.parseInt(cookie_userId); 
+		User user=db.getUserById(formattedUserId); 
+		List<Word>mistakenWords=user.getListOfTheMistakenWords();  
+		
+		if (mistakenWords.isEmpty()==true) {
+			returnPage="emptyMistakenWords.html"; 
+		}
+		else {
+			model.addAttribute("mistakenWordList", mistakenWords); 
+			returnPage="showTheMistakenWords.html"; 
+		}
+		
+		return returnPage; 
+	}
+	
+	@PostMapping ("/user/mistakenWords/remove")
+	public String removeTheMistakenWord(Model model, 
+			@RequestParam (name="wordID") Integer wordID,
+			@CookieValue (name="cookie_userId") String cookie_userId ) {
+		Database db=new Database (); 
+		
+		Integer userId=Integer.parseInt(cookie_userId);
+		User user=db.getUserById(userId);
+		List<Word> mistakenWords=user.getListOfTheMistakenWords(); 
+		for (int i=0; i<mistakenWords.size(); i++) {
+			if (mistakenWords.get(i).getId()==wordID) {
+				mistakenWords.remove(mistakenWords.get(i)); 
+			}
+		}
+		db.updateUser(user); 
+		
+		return "removeCompleted.html"; 
 	}
 
 }

@@ -1,5 +1,6 @@
 package Project.Vocabulary.Quiz_MVC.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,10 +24,10 @@ public class User {
 	private final int initQuestionCounter=10; 
 	
 	@Transient
-	private final int goldRank=20;
+	private final int goldRank=2;
 	
 	@Transient
-	private final int difficultyRank=50; 
+	private final int difficultyRank=2; 
 	
 	@Transient
 	private final int initNumberOfLives=3; 
@@ -132,9 +133,12 @@ public class User {
 	
 	@Column (name="demigod")
 	private boolean demigod;
+	
+	@Transient
+	ArrayList<String> ranksToWord; 
 
 	public User() {
-		
+		this.ranksToWord=new ArrayList<String>(); 
 	}
 
 	public User(String username, String password) {
@@ -159,6 +163,18 @@ public class User {
 		this.lives=initNumberOfLives; 
 		this.actualQuestions=initQuestionCounter; 
 		this.listOfTheMistakenWords = null;
+	}
+
+	public int getWinsEasy() {
+		return winsEasy;
+	}
+
+	public int getWinsMedium() {
+		return winsMedium;
+	}
+
+	public int getWinsHard() {
+		return winsHard;
 	}
 
 	public int getId() {
@@ -395,7 +411,81 @@ public class User {
 	}
 	
 	
+	public ArrayList<String> getRanksToWord() {
+		return ranksToWord;
+	}
+
 	/**METHODS*/
+	
+	public void fillTheRanksToWordList() {
+		
+		if (phrasalVerbs_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No"); 
+		}
+		if (collocations_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if (nouns_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if(adjectives_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if (sentences_Gold==true) {
+			ranksToWord.add("Yes"); 
+		}
+		else {
+			ranksToWord.add("No"); 
+		}
+		if (adverbs_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if (informaticVocabulary_Gold==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No"); 
+		}
+		if (noble==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if(baron==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No");
+		}
+		if (king==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No"); 
+		}
+		if (demigod==true) {
+			ranksToWord.add("Yes");
+		}
+		else {
+			ranksToWord.add("No"); 
+		}
+	}
 
 
 	public void attemptsIncrease() {
@@ -409,7 +499,10 @@ public class User {
 		this.rightAnswersCounter++; 
 	}
 	
-	public void setRanks() {
+
+
+	
+	private void setRanks() {
 		
 		if (phrasalVerbPoints==goldRank) {
 			
@@ -459,12 +552,28 @@ public class User {
 			
 			king=true; 
 		}
+		if (phrasalVerbs_Gold && collocations_Gold && nouns_Gold && adjectives_Gold 
+				&& sentences_Gold && adverbs_Gold && informaticVocabulary_Gold &&
+				noble && baron && king) {
+			demigod=true; 
+		}
 
 	}
-	
+		private void difficultyRankIncrease(String difficultyLevel) {
+		
+		if (difficultyLevel.equals(Difficulty_Level.EASY.toString())) {
+			winsEasy++;
+		}
+		else if(difficultyLevel.equals(Difficulty_Level.MEDIUM.toString())) {
+			winsMedium++;
+		}
+		else {
+			winsHard++; 
+		}
+		
+	}
 
-
-	public void pointsIncrease(int categoryId) {
+	private void pointsIncrease(int categoryId) {
 		
 		if (categoryId==1) {
 			 this.phrasalVerbPoints++;
@@ -512,14 +621,16 @@ public class User {
 		
 	}
 
-	public void WinnerQuizUpdate( int id) {
+	public void WinnerQuizUpdate( int id, String difficulty) {
 		
+		difficultyRankIncrease (difficulty); 
 		pointsIncrease (id); 
 		attemptsIncrease(); 
 		this.wins++; 
 		this.actualQuestions=initQuestionCounter; 
 		this.setLives(initNumberOfLives);
 		this.setRightAnswersCounter(0);
+		setRanks(); 
 		
 	}
 

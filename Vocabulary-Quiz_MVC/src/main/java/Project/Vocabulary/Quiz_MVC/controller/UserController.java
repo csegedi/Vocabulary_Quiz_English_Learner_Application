@@ -1,5 +1,6 @@
 package Project.Vocabulary.Quiz_MVC.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -86,11 +87,14 @@ public class UserController {
 		String returnPage=null; 
 		User user=null; 
 		List <Category> categories=db.getAllCategory(); 
+		ArrayList<String>ranksInWords=null; 
 		
 		//First enter of the user after the login:
 		if ( (username!=null) && (password!=null) ) {
 			
 			List <User> users=db.getUserByNameAndPassword(username, password); 
+			
+			
 			
 			if (users.size()==1) {
 				
@@ -100,11 +104,13 @@ public class UserController {
 				
 				Cookie cookie1=new Cookie("cookie_userId", formatted_userId); 
 				response.addCookie(cookie1); 
+				user.fillTheRanksToWordList(); 
+				ranksInWords=user.getRanksToWord(); 
 				
-				model.addAttribute(user); 
 				
 				model.addAttribute("user", user); 
 				model.addAttribute("categoryList", categories); 
+				model.addAttribute("ranksList", ranksInWords); 
 			
 				returnPage="user.html"; 
 			}
@@ -121,9 +127,12 @@ public class UserController {
 			int id=Integer.parseInt(cookie_userId); 
 			
 			user=db.getUserById(id); 
+			user.fillTheRanksToWordList(); 
+			ranksInWords=user.getRanksToWord(); 
 			
 			model.addAttribute("user", user); 
 			model.addAttribute("categoryList", categories); 
+			model.addAttribute("ranksList", ranksInWords); 
 			
 			returnPage="user.html"; 
 			

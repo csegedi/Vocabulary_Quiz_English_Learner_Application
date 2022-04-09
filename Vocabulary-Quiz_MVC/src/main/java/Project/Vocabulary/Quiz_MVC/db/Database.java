@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
+
 import Project.Vocabulary.Quiz_MVC.model.Admin;
 import Project.Vocabulary.Quiz_MVC.model.Category;
 import Project.Vocabulary.Quiz_MVC.model.User;
@@ -253,6 +254,7 @@ public class Database {
 		session.close();
 		
 	}
+	
 		
 	public void close() {
 		
@@ -261,18 +263,7 @@ public class Database {
 
 	
 
-	
 
-	
-
-	
-
-
-	
-
-	
-
-	
 
 
 }

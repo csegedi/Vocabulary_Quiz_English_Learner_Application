@@ -20,6 +20,15 @@
 		
 			<br>
 			<br>
+			
+			<form action="/user/mistakenWords" method="post">
+				
+			<button style="color:red" type="submit">Practice your mistaken words!</button>
+				
+		</form>	
+		
+			<br>
+			<br>
 
 			<h3 style="color:red" th:text="${user.username}"></h3>
 				<h5>Your statistics:</h5>
@@ -56,7 +65,53 @@
 							<br>
 					<p>Number of all failed attempts: </p>
 					<p th:text="${user.lost}"></p>
-					
+					<br>
+					<br>
+					<p>Number of all wins on Easy mode: </p>	
+						<p th:text="${user.winsEasy}" ></p>
+							<br>
+					<p>Number of all wins on Medium mode: </p>
+						<p th:text="${user.winsMedium}"></p>
+							<br>
+					<p>Number of all wins on Hard mode: </p>
+						<p th:text="${user.winsHard}"></p>
+							<br>
+					<br>
+					<h5>Your Ranks:</h5>
+					<br>
+					<p>Phrasal Verbs Category Gold Award: </p>
+						<p th:text="${ranksList.get(0)}"></p>
+							<br>
+					<p>Collocation Gold Award: </p>
+						<p th:text="${ranksList.get(1)}"></p>
+							<br>
+					<p>Nouns Gold Award: </p>
+						<p th:text="${ranksList.get(2)}"></p>
+							<br>
+					<p>Adjectives Gold Award: </p>
+						<p th:text="${ranksList.get(3)}"></p>
+							<br>
+					<p>Sentences Gold Award: </p>
+						<p th:text="${ranksList.get(4)}"></p>
+							<br>
+					<p>Adverbs Gold Award: </p>
+						<p th:text="${ranksList.get(5)}"></p>
+							<br>
+					<p>Informatic Vocabulary Gold Award: </p>
+						<p th:text="${ranksList.get(6)}"></p>
+							<br>
+					<p>Noble Award: </p>
+						<p th:text="${ranksList.get(7)}"></p>
+							<br>
+					<p>Baron Award: </p>
+						<p th:text="${ranksList.get(8)}"></p>
+							<br>
+					<p>King Award: </p>
+						<p th:text="${ranksList.get(9)}"></p>
+							<br>
+					<p>Demigod Award: </p>
+						<p th:text="${ranksList.get(10)}"></p>
+							<br>
 					<br>
 					<br>
 					<br>
