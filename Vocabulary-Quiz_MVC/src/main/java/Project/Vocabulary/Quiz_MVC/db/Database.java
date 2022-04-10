@@ -261,6 +261,22 @@ public class Database {
 		sessionFactory.close();
 	}
 
+	public List<Word> getTheWordByText(String text) {
+		
+		List<Word>words=null; 
+		
+		Session session=sessionFactory.openSession(); 
+		session.beginTransaction(); 
+		
+		Query query=session.createNativeQuery("SELECT * FROM word WHERE english LIKE:incoming OR hungarian LIKE:incoming", Word.class); 
+		query.setParameter("incoming", "%"+ text+"%"); 
+		words=query.getResultList(); 
+		session.getTransaction(); 
+		session.close();
+		
+		return words;
+	}
+
 	
 
 

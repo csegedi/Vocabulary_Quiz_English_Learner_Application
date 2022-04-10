@@ -253,5 +253,40 @@ public class AdminController {
 		return "completedUpdate.html";
 
 	}
+	
+	@GetMapping ("/vocabulary")
+	public String vocabulary (Model model) {
+		
+		Database db=new Database(); 
+		List<Word>phrasalVerbs=db.getTheWordByCategoryId(1); 
+		List<Word>collocations=db.getTheWordByCategoryId(2); 
+		List<Word>nouns=db.getTheWordByCategoryId(3); 
+		List<Word>adjectives=db.getTheWordByCategoryId(4); 
+		List<Word>sentences=db.getTheWordByCategoryId(5); 
+		List<Word>adverbs=db.getTheWordByCategoryId(6); 
+		List<Word>informatics=db.getTheWordByCategoryId(7); 
+		
+		model.addAttribute("ph", phrasalVerbs);
+		model.addAttribute("coll", collocations);
+		model.addAttribute("nouns", nouns);
+		model.addAttribute("adj", adjectives);
+		model.addAttribute("sen", sentences);
+		model.addAttribute("adv", adverbs);
+		model.addAttribute("info", informatics);
+		
+		return "vocabulary.html"; 
+	}
+	
+	@GetMapping ("/vocabulary/result")
+	public String result (Model model, @RequestParam (required = false, name="text") String text) {
+		
+		Database db=new Database (); 
+		List<Word> results=db.getTheWordByText(text); 
+		
+		model.addAttribute("list", results); 
+		
+		
+		return "result.html"; 
+	}
 
 }
