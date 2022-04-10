@@ -1,70 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Update!</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Update!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
 	
-	<body>
+<body>
+	<div class="head">
+		<h3>Select the word you want to change:</h3>	
+		<form action="/" method="get">
+				<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/admin" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
 	
+	
+
 		<table>
-		
-			<th>Id</th>
-			<th>English</th>
+			<th id="id">Id</th>
+			<th >English</th>
 			<th>Hungarian</th>
 			<th>Example Sentence</th>
-			
 			<tr th:each="words: ${wordsList}">
-				
-				<td th:text="${words.id}"></td>
+				<td  th:text="${words.id}"></td>
 				<td th:text="${words.english}"></td>
 				<td th:text="${words.hungarian}"></td>
 				<td th:text="${words.example}"></td>
-			
 			</tr>
-	
 		</table>
-		
-			<br>
-			<br>
-		
 		<form action="/admin/change/selected" method="post" >
-		
-			<p>Please insert the id number of the words above!</p>
-		
-				<input type="number" name="wordId">
-				<input type="hidden" name="selectedCategory" th:value="${category_id}"  >
-				<input type="submit" >
-			
+			<input type="number" name="wordId">
+			<br>
+			<input type="hidden" name="selectedCategory" th:value="${category_id}"  >
+			<input class="button" type="submit" value="Submit" >
 		</form>
-		
-			<br>
-			<br>
-		
-		<form action="/admin" method="post">
-				
-			<p>Click here to step back:</p>
-					
-				<br>
-				
-			<button type="submit">Back</button>
-			
-		</form>
-		
-			<br>
-			<br>
-		
-		<form action="/" method="get">
-				
-			<p>Click here to exit:</p>
-					
-				<br>
-				
-			<button type="submit">exit</button>
-				
-		</form>
-
-		
-	</body>
+	
+</body>
 
 </html>

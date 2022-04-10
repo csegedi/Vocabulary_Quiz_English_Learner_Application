@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Admin</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	
-	<body>
+</head>
 	
-	<h3>Here you can add new words:</h3>
-	
+<body>
+	<div class="head">
+		<h3>Admin's main page</h3>
+		<form action="/" method="get">
+				<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+	</div>
+	<div class="menu">
+		<p class="emphasize">Insert new words to the database:</p>
 		<form action="/admin/insert" method=post>
-		
 			<p>English:</p>
 				<input type="text" name="english"  >
 			<p>Hungarian:</p>
 				<input type="text" name="hungarian">
 			<p>Example Sentence:</p>
 				<input type="text" name="example">
-				
+			<br>
+			<p>Select category:</p>
 			<select name="selectedCategory" >
-			
 				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
-			
 			</select>
-			
-			<input type="submit">
-			
+			<br>
+			<br>
+				<input class="button" type="submit" value="Submit">
 		</form>
-		
-	<h3>Here you can change the data:</h3>
+	</div>
+	<div class="menu">
+		<p class="emphasize">Here you can change the data:</p>
 		<p>To modification you have to select the category:</p>
-		
-			<form action="/admin/change" method="post" >
-			
-				<select name="selectedCategory" >
-			
+		<form action="/admin/change" method="post" >
+			<select name="selectedCategory" >
 				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
-			
 			</select>
-			
-			<input type="submit">
-			
-			</form>
-			
-			<br>
-			<br>
-			
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-					<br>
-				
-				<button type="submit">exit</button>
-				
-			</form>
-			
-
-	</body>
+		<br>
+		<br>
+			<input class="button" type="submit" value="Submit">
+		</form>
+	</div>
+</body>
 	
 </html>

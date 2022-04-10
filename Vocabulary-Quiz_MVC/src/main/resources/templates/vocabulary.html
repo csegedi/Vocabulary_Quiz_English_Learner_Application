@@ -11,9 +11,20 @@
 <br>
 <input type="text" name="text">
 <button type="submit">Search</button>
-
-
 </form>
+
+<h3>The actual categories of the words are the following:</h3>
+<p>Phrasal Verbs: <i th:text="${ph.size}"> </i> words<p>
+<p>Collocations: <i th:text="${coll.size}"> </i> expressions<p>
+<p>Nouns: <i th:text="${nouns.size}"> </i> words<p>
+<p>Adjectives: <i th:text="${adj.size}"> </i> words<p>
+<p>Sentences: <i th:text="${sen.size}"> </i> expressions or sentences<p>
+<p>Adverb: <i th:text="${adv.size}"> </i> words<p>
+<p>Informatic Vocabulary: <i th:text="${info.size}"> </i> words<p>
+
+<h4>The current size of the application's vocabulary: </h4>
+			<p th:text="${allWords}" ></p>
+			<br>
 
 <h4>Phrasal Verbs</h4>
 <table>

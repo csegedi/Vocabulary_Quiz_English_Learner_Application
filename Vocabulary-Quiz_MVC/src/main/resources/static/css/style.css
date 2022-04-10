@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+html{
+	background:linear-gradient(to right, rgba(77,195,255,1), rgba(77,195,255,0) ); 
+	background-size:contain;
+	background-repeat:repeat-y;
+	background-position:center;
+	font-family:"Amiri", serif; 
+}
+h1{
+	text-align:center;
+	text-shadow: 2px 1px white, 6px 1px blue; 
+	font-size:3em; 
+	color:rgba(255, 0, 0, 0.7); 
+	letter-spacing:2px; 
+	margin:0em; 
+}
+h3{
+	text-align:center; 
+}
+table{
+	float:left; 
+}
+
+.head{
+	width:auto;
+	height:9em;
+	border-bottom-style:solid;
+	border-width:1px;
+	border-color:blue; 
+	margin:0ox; 
+}
+.menu, .menuWithTable{
+	width:15em;
+	background:linear-gradient( to bottom, rgba(77,148,255,0.8), rgba(77,148,255,0) );
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+	height:45em; 
+	margin-top:3px; 
+	float:left;
+	margin-right:50px; 
+	margin-bottom:50px; 
+}
+.button{
+	width:100%;
+	height:60px;
+	background:linear-gradient( to left, rgba(153,230,184,0.8), rgba(153,230,184,0) );
+	font-family:"Amiri", serif;
+	font-size:1.2em; 
+	margin:0px;
+	padding:5px; 
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+	border-bottom-color:white; 
+	font-weight:bold;
+	border-left-width:0px; 
+	border-right-color:transparent; 
+	border-top-color:transparent; 
+	
+}
+#vocabulary{
+	color:blue
+}
+#vocabulary::first-letter {
+	font-size:2em; 
+	color:red; 
+}
+.button:hover {
+	border:1px solid red; 
+}
+.button:active {
+	border:1px solid blue; 
+	background:linear-gradient( to right, rgba(153,230,184,0.8), rgba(153,230,184,0) );
+}
+p{
+	font-family:"Amiri", serif;
+	font-size:1.2em;
+	font-weight:bold;
+}
+input[type=text], input[type=number]{
+	width:100%; 
+	height:40px; 
+	border:0px;
+	padding:0px; 
+	background-color:#b7ffff;
+}
+.emphasize{
+	color:red; 
+	text-shadow:1px 1px black; 
+}
+
+.exit, .back{
+	position:absolute;
+	top:15px; 
+	right:0px; 
+	width:2%;
+	background-color:transparent;
+	border:0px;
+	margin:0px; 
+	color:red; 
+}
+.back{
+	top:40px; 
+	color:blue; 
+}
+
+.exit:hover, .back:hover{
+	
+	border:1px solid red;
+	border-radius:20px; 
+}
+.exit:active, .back:active{
+	border-width:3px 
+}
+
+select{
+	width:100%;
+	height:40px;
+	font-family:"Amiri", serif;
+	background-color:#b7ffff; 
+	font-size:1.2em;
+	font-weight:bold;
+}
+table{
+	width:50%; 
+	margin-bottom:5em; 
+	border:3px solid blue; 
+	
+}
+td{
+	width:5em; 
+	border:1px solid red; 
+	border-collapse:collapse;
+}
+.menuWithTable{
+	width:40em; 
+	margin:auto;
+}
+#id{
+	width:5em; 
+}
+

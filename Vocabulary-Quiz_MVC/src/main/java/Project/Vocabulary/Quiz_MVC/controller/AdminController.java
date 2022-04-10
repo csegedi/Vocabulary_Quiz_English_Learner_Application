@@ -37,38 +37,10 @@ public class AdminController {
 			}
 		}
 
-		/** INITIAL INFORMATIONS OF THE MAIN PAGE */
-
-		Database db = new Database();
-
-		List<Category> categories = db.getAllCategory();
-		ArrayList<Integer> piecesOfWords = new ArrayList<Integer>();
-		int vocabularySize = 0;
-
-		// collecting of the size of the categories
-
-		for (int i = 1; i <= categories.size(); i++) {
-			List<Word> words = db.getTheWordByCategoryId(i);
-			piecesOfWords.add(words.size());
-
-		}
-
-		// query the size of the vocabulary
-
-		for (int piecesOfWordsIndex = 0; piecesOfWordsIndex < piecesOfWords.size(); piecesOfWordsIndex++) {
-			vocabularySize += piecesOfWords.get(piecesOfWordsIndex);
-		}
-
-		model.addAttribute("categoryList", categories);
-		model.addAttribute("numberOftheWords", piecesOfWords);
-		model.addAttribute("allWords", vocabularySize);
-
-		db.close();
-
 		return "index.html";
 
 	}
-
+	
 	/** ADMIN LOGIN */
 
 	@GetMapping("/adminLogin")
@@ -257,7 +229,22 @@ public class AdminController {
 	@GetMapping ("/vocabulary")
 	public String vocabulary (Model model) {
 		
-		Database db=new Database(); 
+		Database db = new Database();
+
+		List<Category> categories = db.getAllCategory();
+		ArrayList<Integer> piecesOfWords = new ArrayList<Integer>();
+		int vocabularySize = 0;
+		
+		for (int i = 1; i <= categories.size(); i++) {
+			List<Word> words = db.getTheWordByCategoryId(i);
+			piecesOfWords.add(words.size());
+		}
+
+		for (int piecesOfWordsIndex = 0; piecesOfWordsIndex < piecesOfWords.size(); piecesOfWordsIndex++) {
+			vocabularySize += piecesOfWords.get(piecesOfWordsIndex);
+		}
+		
+		 
 		List<Word>phrasalVerbs=db.getTheWordByCategoryId(1); 
 		List<Word>collocations=db.getTheWordByCategoryId(2); 
 		List<Word>nouns=db.getTheWordByCategoryId(3); 
@@ -265,6 +252,7 @@ public class AdminController {
 		List<Word>sentences=db.getTheWordByCategoryId(5); 
 		List<Word>adverbs=db.getTheWordByCategoryId(6); 
 		List<Word>informatics=db.getTheWordByCategoryId(7); 
+	
 		
 		model.addAttribute("ph", phrasalVerbs);
 		model.addAttribute("coll", collocations);
@@ -273,6 +261,7 @@ public class AdminController {
 		model.addAttribute("sen", sentences);
 		model.addAttribute("adv", adverbs);
 		model.addAttribute("info", informatics);
+		model.addAttribute("allWords", vocabularySize);
 		
 		return "vocabulary.html"; 
 	}
