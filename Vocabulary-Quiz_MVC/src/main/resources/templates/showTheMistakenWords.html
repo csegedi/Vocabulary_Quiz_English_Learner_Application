@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Mistaken words</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
+
 <body>
-
-<table>
-
-<tr>
-<th>English</th>
-<th>Hungarian</th>
-<th>Example</th>
-</tr>
-
-<tr th:each=mistakenWords:${mistakenWordList} >
-
-	<td th:text="${mistakenWords.english}" > </td>
-	<td th:text="${mistakenWords.hungarian}"></td>
-	<td th:text="${mistakenWords.example}"></td>
-	<td>
-	<form action=/user/mistakenWords/remove method="post">
-	
-	<button type="submit">Okay, I have learned this word</button>
-	<input type="hidden" th:value="${mistakenWords.id}" name="wordID">
-	
-	</form>
-	</td>
-</tr>
-</table>
-<br>
-<br>
-
-<form action="/user" method="post">
-	<button type="submit">Back</button>
-</form>	
-	
+	<div class="head">
+		<h3>List of your mistakes</h3>
+		<h3>Check out your faults, learn the words and expressions, and if you feel you know it, you can remove it from the list!</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/user" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+	<br>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+			<th>Remover button</th>
+		</tr>
+		<tr th:each=mistakenWords:${mistakenWordList} >
+			<td class="words" th:text="${mistakenWords.english}" > </td>
+			<td class="words" th:text="${mistakenWords.hungarian}"></td>
+			<td th:text="${mistakenWords.example}"></td>
+			<td class="removerButton">
+				<form action=/user/mistakenWords/remove method="post">
+				<button class="button" type="submit">Okay</button>
+				<input type="hidden" th:value="${mistakenWords.id}" name="wordID">
+				</form>
+			</td>
+		</tr>
+	</table>
 </body>
 
 </html>

@@ -5,13 +5,13 @@
 	<title>Update!</title>
 	<link rel="stylesheet" href="/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
 	
 <body>
 	<div class="head">
-		<h3>Select the word you want to change:</h3>	
+		<h3>Selecting to change:</h3>
+		<h3>To select a word please insert the id number of the word you want to change </h3>	
 		<form action="/" method="get">
 				<button class="exit" type="submit"> <span class="material-icons">close</span></button>
 		</form>
@@ -19,28 +19,28 @@
 			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
 		</form>
 	</div>
-	
-	
-
+	<div class="smallBox">
+		<form action="/admin/change/selected" method="post" >
+			<input type="number" name="wordId" placeholder="insert id number...">
+		<br>
+		<br>
+			<input type="hidden" name="selectedCategory" th:value="${selectedCategory}"  >
+			<input class="button"  type="submit" value="Submit" >
+		</form>
+	</div>
+	<br>
 		<table>
-			<th id="id">Id</th>
+			<th>Id</th>
 			<th >English</th>
 			<th>Hungarian</th>
 			<th>Example Sentence</th>
 			<tr th:each="words: ${wordsList}">
-				<td  th:text="${words.id}"></td>
-				<td th:text="${words.english}"></td>
-				<td th:text="${words.hungarian}"></td>
+				<td class="iD"  th:text="${words.id}"></td>
+				<td class="words" th:text="${words.english}"></td>
+				<td class="words" th:text="${words.hungarian}"></td>
 				<td th:text="${words.example}"></td>
 			</tr>
 		</table>
-		<form action="/admin/change/selected" method="post" >
-			<input type="number" name="wordId">
-			<br>
-			<input type="hidden" name="selectedCategory" th:value="${category_id}"  >
-			<input class="button" type="submit" value="Submit" >
-		</form>
-	
 </body>
 
 </html>

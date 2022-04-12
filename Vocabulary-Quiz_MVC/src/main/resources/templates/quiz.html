@@ -3,29 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>QUIZZZZZ!!!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
 
 <body>
-	<p th:text="${quizWord}"></p>
-	<br>
-	
-		
-	
-	
-	
-	<form action="/user/quiz/solution" method="post">
-	<input type="radio" id="index0" name="index" th:value="${generatedFourWords.get(0)}" >
-	<label  th:text="${generatedFourWords.get(0)}" for="index0"></label><br>
-	<input type="radio" id="index1" name="index" th:value="${generatedFourWords.get(1)}" >
-	<label  th:text="${generatedFourWords.get(1)}" for="index1"></label><br>
-	<input type="radio" id="index2" name="index" th:value="${generatedFourWords.get(2)}" >
-	<label  th:text="${generatedFourWords.get(2)}" for="index2"></label><br>
-	<input type="radio" id="index3" name="index" th:value="${generatedFourWords.get(3)}" >
-	<label  th:text="${generatedFourWords.get(3)}" for="index3"></label><br>
-	<input type="hidden" name="wordFromQuiz" th:value="${quizWord}" >
-	<input type="submit" value="Submit">
-	</form>
-	
+	<div class="head">
+		<h3>Good Luck!</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+	</div>
+	<div class="quizBox">
+		<p th:text="${quizWord}"></p>
+		<br>
+		<br>
+		<form action="/user/quiz/solution" method="post">
+			<input type="radio" id="index0" name="index" th:value="${generatedFourWords.get(0)}" >
+			<label  th:text="${generatedFourWords.get(0)}" for="index0"></label><br>
+			<input type="radio" id="index1" name="index" th:value="${generatedFourWords.get(1)}" >
+			<label  th:text="${generatedFourWords.get(1)}" for="index1"></label><br>
+			<input type="radio" id="index2" name="index" th:value="${generatedFourWords.get(2)}" >
+			<label  th:text="${generatedFourWords.get(2)}" for="index2"></label><br>
+			<input type="radio" id="index3" name="index" th:value="${generatedFourWords.get(3)}" >
+			<label  th:text="${generatedFourWords.get(3)}" for="index3"></label><br>
+			<input type="hidden" name="wordFromQuiz" th:value="${quizWord}" >
+			<input class="button" type="submit" value="Submit">
+		</form>
+	</div>
 </body>
 
 </html>

@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Correct Answer!</title>
-	</head>
-	
-	<body>
-	
-		<h5 th:text="${text}" ></h5>
-		
-			<p>Your answer:</p>
-			<p th:text="${answer}" ></p>
-		
-			<p th:text="${word.english}"  ></p>
-			<p th:text="${word.hungarian}"  ></p>
-			<p th:text="${word.example}"  ></p>
-			
-			
-			<form action="/user/quiz" method="post">
-				
-				<p>Click here to step back:</p>
-					
-				<br>
-				
-				<button type="submit">Back</button>
-			
-			</form>
-			
-				<br>
-				<br>
-			
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-				<br>
-				
-				<button type="submit">Exit</button>
-			
-			</form>
-	
-	
-	</body>
-	
+
+<head>
+	<meta charset="UTF-8">
+	<title>Correct Answer!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
+
+<body>
+	<div class="head">
+		<h3 th:text="${text}" ></h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+	</div>
+	<div class="quizBox">
+		<p class="emphasize">Your answer: </p>
+		<p th:text="${answer}" ></p>
+		<p class="emphasize">The right answer:</p>
+		<p th:text="${word.english}"  ></p>
+		<p th:text="${word.hungarian}"  ></p>
+		<p th:text="${word.example}"  ></p>
+		<form action="/user/quiz" method="post">
+			<button class="button" type="submit">Back to the next question</button>
+		</form>
+	</div>
+</body>
+
 </html>

@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Successful Registration!</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Successful Registration!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
 
-	<body>
-	
-		<h4 style="text-align:center" >The registration was successful!! </h4>
-		
-			<form action="/login" method="post">
-				
-				<p>Click here to login:</p>
-					
-				<br>
-				
-				<button type="submit">login</button>
-				
-			</form>
-			
-			<br>
-			<br>
-			
-			
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-				<br>
-				
-				<button type="submit">exit</button>
-				
-			</form>
-
-	
-	</body>
+<body>
+	<div class="head">
+		<h3>The registration was successful!! </h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/login" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+</body>
 
 </html>

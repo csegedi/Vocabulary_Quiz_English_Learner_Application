@@ -17,36 +17,38 @@
 				<button class="exit" type="submit"> <span class="material-icons">close</span></button>
 		</form>
 	</div>
-	<div class="menu">
-		<p class="emphasize">Insert new words to the database:</p>
-		<form action="/admin/insert" method=post>
-			<p>English:</p>
-				<input type="text" name="english"  >
-			<p>Hungarian:</p>
-				<input type="text" name="hungarian">
-			<p>Example Sentence:</p>
-				<input type="text" name="example">
-			<br>
-			<p>Select category:</p>
-			<select name="selectedCategory" >
-				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
-			</select>
+	<div class="container">
+		<div class="menu">
+			<p class="emphasize">Insert new words to the database:</p>
+			<form action="/admin/insert" method=post>
+				<p>English:</p>
+					<input type="text" name="english"  >
+				<p>Hungarian:</p>
+					<input type="text" name="hungarian">
+				<p>Example Sentence:</p>
+					<input type="text" name="example">
+				<br>
+				<p>Select category:</p>
+				<select name="selectedCategory" >
+					<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+				</select>
+				<br>
+				<br>
+					<input class="button" type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="menu">
+			<p class="emphasize">Here you can change the data:</p>
+			<p>To modification you have to select the category:</p>
+			<form action="/admin/change" method="post" >
+				<select name="selectedCategory" >
+					<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+				</select>
 			<br>
 			<br>
 				<input class="button" type="submit" value="Submit">
-		</form>
-	</div>
-	<div class="menu">
-		<p class="emphasize">Here you can change the data:</p>
-		<p>To modification you have to select the category:</p>
-		<form action="/admin/change" method="post" >
-			<select name="selectedCategory" >
-				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
-			</select>
-		<br>
-		<br>
-			<input class="button" type="submit" value="Submit">
-		</form>
+			</form>
+		</div>
 	</div>
 </body>
 	

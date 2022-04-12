@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>Wrong Input!</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Wrong Input!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-	<body>
-	
-	   <p>You have added a wrong data!</p>
-	   
-	   	<form action="/admin" method="post">
-				
-			<p>Click here to step back:</p>
-					
-				<br>
-				
-			<button type="submit">Back</button>
-			
-		</form>
-		
-				<br>
-				<br>
-		
+<body>
+	<div class="head">
+		<h3>You have added a wrong data!</h3>
 		<form action="/" method="get">
-				
-			<p>Click here to exit:</p>
-					
-				<br>
-				
-			<button type="submit">exit</button>
-				
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
 		</form>
-	   
-	</body>
+		<form action="/admin" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+</body>
 	
 </html>

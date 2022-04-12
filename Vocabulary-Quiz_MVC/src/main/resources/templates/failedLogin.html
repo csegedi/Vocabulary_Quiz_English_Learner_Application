@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>failed Login...</title>
-	</head>
-	
-	<body>
-	
-		<p>Incorrect username or password!</p>
-		
-			<form action="/login" method="post">
-				
-				<p>Click here to back to the LogIn page:</p>
-					
-				<br>
-				
-						<button type="submit">Back</button>
-				</form>
 
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<title>failed Login...</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
+
+<body>
+	<div class="head">
+		<h3>Incorrect username or password!</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/login" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+</body>
 	
 </html>

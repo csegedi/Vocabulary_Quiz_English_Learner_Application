@@ -127,63 +127,61 @@ public class AdminController {
 		word.setEnglish(english);
 		word.setHungarian(hungarian);
 		word.setExample(example);
-
+		String returnPage=null; 
+		
+		if ((english.isBlank()) || (hungarian.isBlank()) || (example.isBlank() )) {
+			
+			returnPage="wrongInput.html"; 
+		}
+		else {
+		
 		db.insertNewWord(word.getEnglish(), word.getHungarian(), word.getExample(), categoryId);
-
 		model.addAttribute("word", word);
+		returnPage="newWord.html"; 
+		}
 
-		return "newWord.html";
-
+		return returnPage;
 	}
 
 	/** CORRECTING OR UPDATE THE EARLIER GIVEN WORDS AND EXPRESSIONS */
 
 	// Select a category
 	@PostMapping("/admin/change")
-	public String updateSelect(Model model, @RequestParam(name = "selectedCategory") int categoryId) {
+	public String updateSelect(Model model,
+	@RequestParam(name = "selectedCategory") Integer categoryId) {
 
 		Database db = new Database();
 
 		List<Word> words = db.getTheWordByCategoryId(categoryId);
 
 		model.addAttribute("wordsList", words);
-		model.addAttribute("category_id", categoryId);
+		model.addAttribute("selectedCategory", categoryId);
 
 		db.close();
 
 		return "update.html";
 
 	}
-
 	// Select a word and insert a modified value
 	@PostMapping("/admin/change/selected")
-	public String updateSelectedWord(Model model, @RequestParam(name = "wordId") int wordId,
+	public String updateSelectedWord(Model model, 
+			@RequestParam( required = false, name= "wordId") Integer wordId,
 			@RequestParam(name = "selectedCategory") int categoryId) {
 
 		Database db = new Database();
-		Word word = db.getTheWordById(wordId);
 		String returnPage = null;
-		List<Word> words = db.getTheWordByCategoryId(categoryId);
-		boolean categorySign = false;
-
-		for (int wordsIndex = 0; wordsIndex < words.size(); wordsIndex++) {
-			Word current = words.get(wordsIndex);
-			if (current.getId() == wordId) {
-				categorySign = true;
-			}
-		}
-
-		if ((word != null) && categorySign == true) {
-
+		
+		if (wordId!=null) {
+			
+		Word word = db.getTheWordById(wordId);
+		
 			model.addAttribute("word", word);
 			model.addAttribute("selectedCategory", categoryId);
 			returnPage = "insertModifications.html";
 		}
 
 		else {
-
-			returnPage = "wrongInput.html";
-
+			returnPage="wrongInput.html";
 		}
 
 		db.close();

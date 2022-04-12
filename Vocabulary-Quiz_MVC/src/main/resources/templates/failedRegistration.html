@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Unsuccessful Registration! </title>
-	</head>
-	
-	<body>
-	
-		<h4 style="text-align:center" >The registration was unsuccessful!</h4>
-			
-				<form action="/signIn" method="get">
-				
-					<p>Click here to restart the registration:</p>
-					
-						<br>
-				
-						<button type="submit">Back</button>
-				</form>
-				
-			<br>
-			<br>
-			
-				<form action="/" method="get">
-				
-					<p>Click here to exit:</p>
-					
-						<br>
-				
-						<button type="submit">Exit</button>
-				</form>
-	
-	</body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Unsuccessful Registration! </title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
+
+<body>
+	<div class="head">
+		<h3>The registration was unsuccessful!</h3>
+		<h3>Your username is used, or you didn't fill every text-field!</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/signIn" method="get">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+</body>
 
 </html>

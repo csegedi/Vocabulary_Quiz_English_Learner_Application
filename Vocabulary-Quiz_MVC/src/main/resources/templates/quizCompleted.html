@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 	<meta charset="UTF-8">
 	<title>The Quiz has ended!</title>
-	</head>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
 
-	<body>
-	
-		<h2 th:text="${text}"></h2>
-		
-		<br>
-		<br>
-		
-			<form action="/user" method="post">
-				
-				<p>Click here to step back:</p>
-					
-				<br>
-				
-				<button type="submit">Back</button>
-			
-			</form>
-			
-		<br>
-		<br>
-		
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-				<br>
-				
-				<button type="submit">Exit</button>
-			
-			</form>
-			
+<body>
+	<div class="head">
+		<h3 th:text="${text}"></h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/user" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+</body>
 
-	</body>
-	
-	
 </html>

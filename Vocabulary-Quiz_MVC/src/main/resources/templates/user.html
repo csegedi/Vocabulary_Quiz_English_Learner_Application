@@ -1,132 +1,73 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>User Main Page</title>
-	</head>
-	
-	<body>
-	
-		<h2 style="text-align:center" >Welcome! </h2>
-		
-			<br>
-			<br>
-			
-		<form action="/user/settings" method="post">
-				
-			<button style="color:red" type="submit">Start a new Quiz!</button>
-				
-		</form>	
-		
-			<br>
-			<br>
-			
-			<form action="/user/mistakenWords" method="post">
-				
-			<button style="color:red" type="submit">Practice your mistaken words!</button>
-				
-		</form>	
-		
-			<br>
-			<br>
+<head>
+	<meta charset="UTF-8">
+	<title>User Main Page</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
 
-			<h3 style="color:red" th:text="${user.username}"></h3>
-				<h5>Your statistics:</h5>
-				
-					<p>Points of PhrasalVerbs-Challenge: </p>
-						<p th:text="${user.phrasalVerbPoints}" ></p>
+<body>
+
+	<div class="head">
+		<h1>Welcome! </h1>
+		<h3 th:text="${user.username}"></h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+	</div>
 	
-					<p>Points of Collocation-Challenge: </p>
-						<p th:text="${user.collocationsPoints}" ></p>
-							
-					<p>Points of Nouns-Challenge: </p>
-						<p th:text="${user.nounsPoints}" ></p>
-							
-					<p>Points of Adjectives-Challenge: </p>
-						<p th:text="${user.adjectivesPoints}" ></p>
-							
-					<p>Points of Sentences-Challenge: </p>
-						<p th:text="${user.sentencesPoints}" ></p>
-							
-					<p>Points of Adverbs-Challenge: </p>
-						<p th:text="${user.adverbsPoints}" ></p>
-							
-					<p>Points of Informatic-Vocabulary-Challenge: </p>
-						<p th:text="${user.informaticVocabularyPoints}" ></p>
-						<br>
-						<br>
-						<br>
-						
-					<p>Number of all attempts: </p>	
-						<p th:text="${user.attempts}" ></p>
-							<br>
-					<p>Number of all wins: </p>
-						<p th:text="${user.wins}"></p>
-							<br>
-					<p>Number of all failed attempts: </p>
-					<p th:text="${user.lost}"></p>
-					<br>
-					<br>
-					<p>Number of all wins on Easy mode: </p>	
-						<p th:text="${user.winsEasy}" ></p>
-							<br>
-					<p>Number of all wins on Medium mode: </p>
-						<p th:text="${user.winsMedium}"></p>
-							<br>
-					<p>Number of all wins on Hard mode: </p>
-						<p th:text="${user.winsHard}"></p>
-							<br>
-					<br>
-					<h5>Your Ranks:</h5>
-					<br>
-					<p>Phrasal Verbs Category Gold Award: </p>
-						<p th:text="${ranksList.get(0)}"></p>
-							<br>
-					<p>Collocation Gold Award: </p>
-						<p th:text="${ranksList.get(1)}"></p>
-							<br>
-					<p>Nouns Gold Award: </p>
-						<p th:text="${ranksList.get(2)}"></p>
-							<br>
-					<p>Adjectives Gold Award: </p>
-						<p th:text="${ranksList.get(3)}"></p>
-							<br>
-					<p>Sentences Gold Award: </p>
-						<p th:text="${ranksList.get(4)}"></p>
-							<br>
-					<p>Adverbs Gold Award: </p>
-						<p th:text="${ranksList.get(5)}"></p>
-							<br>
-					<p>Informatic Vocabulary Gold Award: </p>
-						<p th:text="${ranksList.get(6)}"></p>
-							<br>
-					<p>Noble Award: </p>
-						<p th:text="${ranksList.get(7)}"></p>
-							<br>
-					<p>Baron Award: </p>
-						<p th:text="${ranksList.get(8)}"></p>
-							<br>
-					<p>King Award: </p>
-						<p th:text="${ranksList.get(9)}"></p>
-							<br>
-					<p>Demigod Award: </p>
-						<p th:text="${ranksList.get(10)}"></p>
-							<br>
-					<br>
-					<br>
-					<br>
-					
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-					<br>
-				
-				<button type="submit">exit</button>
-				
+	<div class="bigContainer">	
+		<div class="menu">
+			<form action="/user/settings" method="post">
+				<button class="button" type="submit">Start a new Quiz!</button>
+			</form>	
+			<br>
+			<form action="/user/mistakenWords" method="post">
+				<button class="button" type="submit">Mistaken words</button>
 			</form>
-				
-	
-	</body>
+		</div>
+		
+		<div class="menu">
+			<p class="emphasize">Your points: </p>
+			<br>
+			<p>Points of PhrasalVerbs-Challenge: <span th:text="${user.phrasalVerbPoints}"></span></p>
+			<p>Points of Collocation-Challenge:<span th:text="${user.collocationsPoints}"></span></p>
+			<p>Points of Nouns-Challenge:<span th:text="${user.nounsPoints}"></span></p>
+			<p>Points of Adjectives-Challenge: <span th:text="${user.adjectivesPoints}"> </span></p>
+			<p>Points of Sentences-Challenge: <span th:text="${user.sentencesPoints}" ></span></p>
+			<p>Points of Adverbs-Challenge: <span th:text="${user.adverbsPoints}"></span> </p>
+			<p>Points of Informatic-Vocabulary-Challenge: <span th:text="${user.informaticVocabularyPoints}"></span></p>
+		</div>
+		
+		<div class="menu">
+			<p class="emphasize">Your statistics: </p>
+			<br>
+			<p>Number of all attempts: <span th:text="${user.attempts}"></span></p>	
+			<p>Number of all wins: <span th:text="${user.wins}"></span></p>
+			<p>Number of all failed attempts: <span th:text="${user.lost}"></span></p>
+			<p>Number of all wins on Easy mode: <span th:text="${user.winsEasy}" ></span></p>	
+			<p>Number of all wins on Medium mode: <span th:text="${user.winsMedium}"></span></p>
+			<p>Number of all wins on Hard mode: <span th:text="${user.winsHard}"></span></p>
+		</div>
+		
+		<div class="menu">
+			<p class="emphasize">Your Ranks:</p>
+			<br>
+			<p>Phrasal Verbs Category Gold Award: <span th:text="${ranksList.get(0)}"></span></p>
+			<p>Collocation Gold Award: <span th:text="${ranksList.get(1)}"></span></p>
+			<p>Nouns Gold Award: <span th:text="${ranksList.get(2)}"></span></p>
+			<p>Adjectives Gold Award:<span th:text="${ranksList.get(3)}"></span></p>
+			<p>Sentences Gold Award: <span th:text="${ranksList.get(4)}"></span></p>
+			<p>Adverbs Gold Award:<span th:text="${ranksList.get(5)}"></span></p>
+			<p>Informatic Vocabulary Gold Award: <span th:text="${ranksList.get(6)}"></span></p>
+			<p>Noble Award: <span th:text="${ranksList.get(7)}"></span></p>
+			<p>Baron Award: <span th:text="${ranksList.get(8)}"></span> </p>
+			<p>King Award: <span th:text="${ranksList.get(9)}"></span> </p>
+			<p>Demigod Award: <span th:text="${ranksList.get(10)}"></span></p>
+		</div>	
+	</div>			
+</body>
 
 </html>

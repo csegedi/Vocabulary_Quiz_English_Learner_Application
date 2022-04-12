@@ -1,89 +1,54 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Quiz settings</title>
-	</head>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Quiz settings</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+</head>
 	
-	<body>
-	
+<body>
+	<div class="head">
+		<h3>Quiz Settings:</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/user" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
+	<div class="description">
+		<p>Reminder:</p>
+		<p>There are three levels of difficulty:</p>
+		<p>EASY: You have 15 seconds to answer the questions.</p>
+		<p>MEDIUM: You have 12 seconds to answer the question.</p>
+		<p>HARD: You have 10 seconds to answer the question.</p>
+		<p>If you will be slow or you give a wrong answer, you lost one life.</p>
+		</div>
+	<div class="menu">
 		<form action="/user/quiz" method=post>
-	
-			<h5>Description:</h5>
-				<p>There are three levels of difficulty:</p>
-				<p>EASY: You have 20 seconds to answer the questions.</p>
-				<p>MEDIUM: You have 15 seconds to answer the question.</p>
-				<p>HARD: You have 10 seconds to answer the question.</p>
-				<br>
-				<p>If you will be slow, you will lost one life. </p>
-				
-				<br>
-				<br>
-		
-			<p>Set the level of the difficulty: </p>
-		
-				<select name="difficulty">
-	
-					<option th:each="difficulty_level:${T(Project.Vocabulary.Quiz_MVC.model.Difficulty_Level).values()}" th:text="${difficulty_level}" th:value="${difficulty_level}"> </option>
-					
-				</select>
-
-		
-				<br>
-				<br>
-	
-			<p>Select a category: </p>
-		
-				<select name="selectedCategory" >
-			
-					<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
-			
-				</select>
-			
-				<br>
-				<br>
-				<br>
-			
-			<p>Set the initial language: </p>
-		
-				<select name="init">
-	
-					<option th:each="language:${T(Project.Vocabulary.Quiz_MVC.model.Language).values()}" th:text="${language}" th:value="${language}"> </option>
-			
-				</select>	
-		<br>
-		<br>
-				
-				<button style="color:red" type="submit">START!</button>
-				
-			
-			</form>
-			
-			<form action="/user/" method="post">
-				
-				<p>Click here to step back:</p>
-					
-				<br>
-				
-				<button type="submit">Back</button>
-			
-			</form>
-			
-				<br>
-				<br>
-			
-			<form action="/" method="get">
-				
-				<p>Click here to exit:</p>
-					
-				<br>
-				
-				<button type="submit">Exit</button>
-			
-			</form>
-			
-			
-
-	</body>
-	
+			<p>Set the level of the difficulty:</p>
+			<select name="difficulty">
+				<option th:each="difficulty_level:${T(Project.Vocabulary.Quiz_MVC.model.Difficulty_Level).values()}" th:text="${difficulty_level}" th:value="${difficulty_level}"> </option>
+			</select>
+			<br>
+			<br>
+			<p>Select a category:</p>
+			<select name="selectedCategory" >
+				<option th:each="categories:${categoryList}" th:value="${categories.id}" th:text="${categories.category_name}"></option>
+			</select>
+			<br>
+			<br>
+			<p>Set the initial language:</p>
+			<select name="init">
+				<option th:each="language:${T(Project.Vocabulary.Quiz_MVC.model.Language).values()}" th:text="${language}" th:value="${language}"> </option>
+			</select>	
+			<br>
+			<br>
+				<button class="button" type="submit">START!</button>
+		</form>
+	</div>
+</body>
 </html>
