@@ -1,7 +1,9 @@
 package Project.Vocabulary.Quiz_MVC.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -153,6 +155,7 @@ public class AdminController {
 		Database db = new Database();
 
 		List<Word> words = db.getTheWordByCategoryId(categoryId);
+		words.sort(Comparator.comparing(Word::getEnglish));
 
 		model.addAttribute("wordsList", words);
 		model.addAttribute("selectedCategory", categoryId);
@@ -170,19 +173,29 @@ public class AdminController {
 
 		Database db = new Database();
 		String returnPage = null;
-		
+		Word word=null; 
+	
 		if (wordId!=null) {
 			
-		Word word = db.getTheWordById(wordId);
+			List<Word> words = db.getTheWordByIdandCategoryId(wordId, categoryId); 
 		
+			if (words.size()!=0) {
+			word=words.get(0); 
+			
 			model.addAttribute("word", word);
 			model.addAttribute("selectedCategory", categoryId);
 			returnPage = "insertModifications.html";
+			}
+			else {
+			returnPage="wrongInput.html"; 
+			}
+		
 		}
 
 		else {
 			returnPage="wrongInput.html";
 		}
+			
 
 		db.close();
 
@@ -193,14 +206,22 @@ public class AdminController {
 	// Update the word in the database
 	@PostMapping("/admin/change/selected/completed")
 	public String updateSelectedWordExecut(Model model, 
-			@RequestParam(name = "wordId") Integer wordId,
+			@RequestParam(required=false, name = "wordId") Integer wordId,
 			@RequestParam(required = false, name = "newEnglish") String newEnglish,
 			@RequestParam(required = false, name = "newHungarian") String newHungarian,
 			@RequestParam(required = false, name = "newExample") String newExample) {
 
 		Database db = new Database();
 		Word word = db.getTheWordById(wordId);
-
+		String returnPage=null; 
+		
+		if (word==null) {
+			
+			returnPage="wrongInput.html"; 
+		}
+		
+		else {
+			
 		if (newEnglish.isEmpty() != true) {
 			word.setEnglish(newEnglish);
 		}
@@ -217,10 +238,12 @@ public class AdminController {
 		db.updateWord(word);
 
 		model.addAttribute("updatedWord", word);
+		returnPage="completedUpdate.html"; 
+		}
 
 		db.close();
 
-		return "completedUpdate.html";
+		return returnPage;
 
 	}
 	
@@ -244,22 +267,51 @@ public class AdminController {
 		
 		 
 		List<Word>phrasalVerbs=db.getTheWordByCategoryId(1); 
+		phrasalVerbs.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>collocations=db.getTheWordByCategoryId(2); 
+		collocations.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>nouns=db.getTheWordByCategoryId(3); 
+		nouns.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>adjectives=db.getTheWordByCategoryId(4); 
+		adjectives.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>sentences=db.getTheWordByCategoryId(5); 
+		sentences.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>adverbs=db.getTheWordByCategoryId(6); 
+		adverbs.sort(Comparator.comparing(Word::getEnglish));
 		List<Word>informatics=db.getTheWordByCategoryId(7); 
+		informatics.sort(Comparator.comparing(Word::getEnglish));
 	
-		
-		model.addAttribute("ph", phrasalVerbs);
-		model.addAttribute("coll", collocations);
-		model.addAttribute("nouns", nouns);
-		model.addAttribute("adj", adjectives);
-		model.addAttribute("sen", sentences);
-		model.addAttribute("adv", adverbs);
-		model.addAttribute("info", informatics);
+		model.addAttribute("phENG", phrasalVerbs);
+		model.addAttribute("collENG", collocations);
+		model.addAttribute("nounsENG", nouns);
+		model.addAttribute("adjENG", adjectives);
+		model.addAttribute("senENG", sentences);
+		model.addAttribute("advENG", adverbs);
+		model.addAttribute("infoENG", informatics);
 		model.addAttribute("allWords", vocabularySize);
+		
+		ArrayList<Word>phrasalVerbsHun=new ArrayList<Word>(phrasalVerbs); 
+		phrasalVerbsHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>collocationsHun=new ArrayList<Word>(collocations); 
+		collocationsHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>nounsHun=new ArrayList<Word>(nouns); 
+		nounsHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>adjectivesHun=new ArrayList<Word>(adjectives); 
+		adjectivesHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>sentencesHun=new ArrayList<Word>(sentences); 
+		sentencesHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>adverbsHun=new ArrayList<Word>(adverbs); 
+		adverbsHun.sort(Comparator.comparing(Word::getHungarian));
+		ArrayList<Word>informaticsHun=new ArrayList<Word>(informatics); 
+		informaticsHun.sort(Comparator.comparing(Word::getHungarian));
+		
+		model.addAttribute("phHUN", phrasalVerbsHun);
+		model.addAttribute("collHUN", collocationsHun);
+		model.addAttribute("nounsHUN", nounsHun);
+		model.addAttribute("adjHUN", adjectivesHun);
+		model.addAttribute("senHUN", sentencesHun);
+		model.addAttribute("advHUN", adverbsHun);
+		model.addAttribute("infoHUN", informaticsHun);
 		
 		return "vocabulary.html"; 
 	}
@@ -273,7 +325,7 @@ public class AdminController {
 		model.addAttribute("list", results); 
 		
 		
-		return "result.html"; 
+		return "searchResult.html"; 
 	}
 
 }

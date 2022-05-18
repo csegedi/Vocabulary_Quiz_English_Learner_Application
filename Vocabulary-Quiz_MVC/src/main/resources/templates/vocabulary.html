@@ -1,259 +1,236 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Vocabulary </title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
+
 <body>
-
-<form action="/vocabulary/result" method="get">
-<p>Search: </p>
-<br>
-<input type="text" name="text">
-<button type="submit">Search</button>
-</form>
-
-<h3>The actual categories of the words are the following:</h3>
-<p>Phrasal Verbs: <i th:text="${ph.size}"> </i> words<p>
-<p>Collocations: <i th:text="${coll.size}"> </i> expressions<p>
-<p>Nouns: <i th:text="${nouns.size}"> </i> words<p>
-<p>Adjectives: <i th:text="${adj.size}"> </i> words<p>
-<p>Sentences: <i th:text="${sen.size}"> </i> expressions or sentences<p>
-<p>Adverb: <i th:text="${adv.size}"> </i> words<p>
-<p>Informatic Vocabulary: <i th:text="${info.size}"> </i> words<p>
-
-<h4>The current size of the application's vocabulary: </h4>
-			<p th:text="${allWords}" ></p>
-			<br>
-
-<h4>Phrasal Verbs</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="phrasal:${ph}">
-	<td th:text="${phrasal.english}"></td>
-	<td th:text="${phrasal.hungarian}"></td>
-	<td th:text="${phrasal.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-
-<h4>Collocations</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="coll:${coll}">
-	<td th:text="${coll.english}"></td>
-	<td th:text="${coll.hungarian}"></td>
-	<td th:text="${coll.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-
-<h4>Nouns</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="nouns:${nouns}">
-	<td th:text="${nouns.english}"></td>
-	<td th:text="${nouns.hungarian}"></td>
-	<td th:text="${nouns.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Adjectives</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="adj:${adj}">
-	<td th:text="${adj.english}"></td>
-	<td th:text="${adj.hungarian}"></td>
-	<td th:text="${adj.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Sentences</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="sentences:${sen}">
-	<td th:text="${sentences.english}"></td>
-	<td th:text="${sentences.hungarian}"></td>
-	<td th:text="${sentences.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Adverbs</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="adverbs:${adv}">
-	<td th:text="${adverbs.english}"></td>
-	<td th:text="${adverbs.hungarian}"></td>
-	<td th:text="${adverbs.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<br>
-<br>
-<h4>Informatic Vocabulary</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="info:${info}">
-	<td th:text="${info.english}"></td>
-	<td th:text="${info.hungarian}"></td>
-	<td th:text="${info.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Vonzatos Igék</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="phrasal:${ph}">
-	<td th:text="${phrasal.hungarian}"></td>
-	<td th:text="${phrasal.english}"></td>
-	<td th:text="${phrasal.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-
-<h4>Szókapcsolatok</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="coll:${coll}">
-	<td th:text="${coll.hungarian}"></td>
-	<td th:text="${coll.english}"></td>
-	<td th:text="${coll.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-
-<h4>Főnevek</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="nouns:${nouns}">
-	<td th:text="${nouns.hungarian}"></td>
-	<td th:text="${nouns.english}"></td>
-	<td th:text="${nouns.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Melléknevek</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="adj:${adj}">
-	<td th:text="${adj.hungarian}"></td>
-	<td th:text="${adj.english}"></td>
-	<td th:text="${adj.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Kifejezések, mondatok</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="sentences:${sen}">
-	<td th:text="${sentences.hungarian}"></td>
-	<td th:text="${sentences.english}"></td>
-	<td th:text="${sentences.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<h4>Határozószavak</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="adverbs:${adv}">
-	<td th:text="${adverbs.hungarian}"></td>
-	<td th:text="${adverbs.english}"></td>
-	<td th:text="${adverbs.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-<br>
-<br>
-<h4>Informatikai szótár</h4>
-<table>
-<tr>
-	<th>English</th>
-	<th>Hungarian</th>
-	<th>Example</th>
-</tr>
-	<tr th:each="info:${info}">
-	<td th:text="${info.hungarian}"></td>
-	<td th:text="${info.english}"></td>
-	<td th:text="${info.example}"></td>
-</tr>
-</table>
-<br>
-<br>
-
-<form action="/" method="get">
-				
-			<p>Click here to exit:</p>
-					
-				<br>
-				
-			<button type="submit">Exit</button>
-			
+	<div class="head">
+		<h3>Vocabulary Site</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
 		</form>
+	</div>
+	
+	<form action="/vocabulary/result" method="get">
+	<p>Search: </p>
+	<br>
+	<input type="text" name="text" id="search">
+	<br>
+	<br>
+	<button class="button" id="searchButton" type="submit">Search</button>
+	</form>
+	<div >
+		<p>The actual categories of the words are the following:</p>
+		<p>Phrasal Verbs: <i th:text="${phENG.size}"> </i> words<p>
+		<p>Collocations: <i th:text="${collENG.size}"> </i> expressions<p>
+		<p>Nouns: <i th:text="${nounsENG.size}"> </i> words<p>
+		<p>Adjectives: <i th:text="${adjENG.size}"> </i> words<p>
+		<p>Sentences: <i th:text="${senENG.size}"> </i> expressions or sentences<p>
+		<p>Adverb: <i th:text="${advENG.size}"> </i> words<p>
+		<p>Informatic Vocabulary: <i th:text="${infoENG.size}"> </i> words<p>
+		<p>The current size of the application's vocabulary: </p>
+		<p th:text="${allWords}" ></p>
+		<br>
+	</div>
+	<h4>Phrasal Verbs</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="phrasal:${phENG}">
+			<td th:text="${phrasal.english}"></td>
+			<td th:text="${phrasal.hungarian}"></td>
+			<td th:text="${phrasal.example}"></td>
+		</tr>
+	</table>
 
+	<h4>Collocations</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="coll:${collENG}">
+			<td th:text="${coll.english}"></td>
+			<td th:text="${coll.hungarian}"></td>
+			<td th:text="${coll.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Nouns</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="nouns:${nounsENG}">
+			<td th:text="${nouns.english}"></td>
+			<td th:text="${nouns.hungarian}"></td>
+			<td th:text="${nouns.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Adjectives</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="adj:${adjENG}">
+			<td th:text="${adj.english}"></td>
+			<td th:text="${adj.hungarian}"></td>
+			<td th:text="${adj.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Sentences</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="sentences:${senENG}">
+			<td th:text="${sentences.english}"></td>
+			<td th:text="${sentences.hungarian}"></td>
+			<td th:text="${sentences.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Adverbs</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="adverbs:${advENG}">
+			<td th:text="${adverbs.english}"></td>
+			<td th:text="${adverbs.hungarian}"></td>
+			<td th:text="${adverbs.example}"></td>
+		</tr>
+	</table>
+
+		<h4>Informatic Vocabulary</h4>
+		<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="info:${infoENG}">
+			<td th:text="${info.english}"></td>
+			<td th:text="${info.hungarian}"></td>
+			<td th:text="${info.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Vonzatos Igék</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="phrasal:${phHUN}">
+			<td th:text="${phrasal.hungarian}"></td>
+			<td th:text="${phrasal.english}"></td>
+			<td th:text="${phrasal.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Szókapcsolatok</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="coll:${collHUN}">
+			<td th:text="${coll.hungarian}"></td>
+			<td th:text="${coll.english}"></td>
+			<td th:text="${coll.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Főnevek</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="nouns:${nounsHUN}">
+			<td th:text="${nouns.hungarian}"></td>
+			<td th:text="${nouns.english}"></td>
+			<td th:text="${nouns.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Melléknevek</h4>
+	<table>
+		<tr>
+			<th>English</th>
+			<th>Hungarian</th>
+			<th>Example</th>
+		</tr>
+		<tr th:each="adj:${adjHUN}">
+			<td th:text="${adj.hungarian}"></td>
+			<td th:text="${adj.english}"></td>
+			<td th:text="${adj.example}"></td>
+		</tr>
+	</table>
+
+	<h4>Kifejezések, mondatok</h4>
+	<table>
+	<tr>
+		<th>English</th>
+		<th>Hungarian</th>
+		<th>Example</th>
+	</tr>
+	<tr th:each="sentences:${senHUN}">
+		<td th:text="${sentences.hungarian}"></td>
+		<td th:text="${sentences.english}"></td>
+		<td th:text="${sentences.example}"></td>
+	</tr>
+	</table>
+
+	<h4>Határozószavak</h4>
+	<table>
+	<tr>
+		<th>English</th>
+		<th>Hungarian</th>
+		<th>Example</th>
+	</tr>
+	<tr th:each="adverbs:${advHUN}">
+		<td th:text="${adverbs.hungarian}"></td>
+		<td th:text="${adverbs.english}"></td>
+		<td th:text="${adverbs.example}"></td>
+	</tr>
+	</table>
+
+	<h4>Informatikai szótár</h4>
+	<table>
+	<tr>
+		<th>English</th>
+		<th>Hungarian</th>
+		<th>Example</th>
+	</tr>
+	<tr th:each="info:${infoHUN}">
+		<td th:text="${info.hungarian}"></td>
+		<td th:text="${info.english}"></td>
+		<td th:text="${info.example}"></td>
+	</tr>
+	</table>
 </body>
 </html>

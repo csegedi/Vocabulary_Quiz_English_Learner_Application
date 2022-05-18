@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Empty List</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
+
 <body>
-
-<p>You don"t have failed, your list is empty!</p>
-
-<form action="/user" method="post">
-<button type="submit">Back</button>
-
-</form>
-
-<form action="/user" method="post">
-	<button type="submit">Back</button>
-</form>	
-
+	<div class="head">
+		<h3>You don't have failed, your list is empty!</h3>
+		<form action="/" method="get">
+			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
+		</form>
+		<form action="/user" method="post">
+			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
+		</form>
+	</div>
 </body>
+
 </html>

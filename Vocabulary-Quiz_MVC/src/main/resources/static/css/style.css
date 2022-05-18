@@ -62,6 +62,10 @@ h3 {
 	border-top-color: transparent;
 }
 
+#searchButton{
+	width:20%; 
+}
+
 #vocabulary {
 	color: blue
 }
@@ -93,6 +97,9 @@ input[type=text], input[type=number] {
 	border: 0px;
 	padding: 0px;
 	background-color: #b7ffff;
+}
+#search{
+	width:20%; 
 }
 
 .emphasize {

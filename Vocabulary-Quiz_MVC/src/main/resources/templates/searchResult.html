@@ -2,22 +2,28 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Remove completed</title>
+	<title>Insert title here</title>
 	<link rel="stylesheet" href="/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 </head>
-
 <body>
 	<div class="head">
-		<h3>The mistake has been removed from the list! Hopefully you will not forget it, and you will give the right answer next time!!</h3>
+		<h3>Result(s) of the searching:</h3>
 		<form action="/" method="get">
 			<button class="exit" type="submit"> <span class="material-icons">close</span></button>
 		</form>
-		<form action="/user/mistakenWords" method="post">
+		<form action="/vocabulary" method="get">
 			<button class="back" type="submit"><span class="material-icons">arrow_back</span></button>
 		</form>
 	</div>
+	<table>
+		<tr th:each="result:${list}">
+			<td th:text="${result.english}"></td>
+			<td th:text="${result.hungarian}"></td>
+			<td th:text="${result.example}"></td>
+		</tr>
+	</table>
+	
 </body>
-
 </html>
