@@ -95,7 +95,6 @@ public class UserController {
 			List <User> users=db.getUserByNameAndPassword(username, password); 
 			
 			
-			
 			if (users.size()==1) {
 				
 				user=users.get(0); 

@@ -50,6 +50,7 @@ public class QuizController {
 			@CookieValue(required = false, name = "cookie_init") String cookie_initLangue,
 			@CookieValue(required = false, name = "cookie_categoryId") String cookie_categoryId,
 			@CookieValue(required = false, name = "cookie_difficulty_Level") String cookie_difficulty_Level,
+			@CookieValue(required = false, name = "cookie_userId") String cookie_userId,
 			HttpServletResponse response, HttpServletRequest request) {
 
 		Database db = new Database();
@@ -59,6 +60,8 @@ public class QuizController {
 		int maxRandomNumber = 0;
 		Word word=null;  
 		Word pickedWord=null; 
+		int userId=Integer.parseInt(cookie_userId); 
+		User user=db.getUserById(userId); 
 
 		if (categoryId != null) {
 			categoryInteger = categoryId;
@@ -144,6 +147,7 @@ public class QuizController {
 		}
 
 		model.addAttribute("quizWord", wordToQuiz);
+		model.addAttribute("actualLife", user.getLives()); 
 		model.addAttribute("init", initLanguage);
 		model.addAttribute("category", categoryId);
 
@@ -279,7 +283,7 @@ public class QuizController {
 
 		user.actualQuestionNumbersDecrease();
 
-		if ((user.getActualQuestions() == 0) && (user.getLives() > 0)) {
+		if ((user.getActualQuestions() == 0) && (user.getLives() > -1)) {
 
 			String victory = "You have completed the quiz!";
 			
@@ -292,7 +296,7 @@ public class QuizController {
 
 		}
 
-		else if (user.getLives() == 0) {
+		else if (user.getLives() == -1) {
 
 			String lost = "You have failed the quiz!";
 			

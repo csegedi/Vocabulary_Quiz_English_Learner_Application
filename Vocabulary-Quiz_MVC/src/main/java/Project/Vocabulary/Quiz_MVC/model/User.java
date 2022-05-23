@@ -24,10 +24,10 @@ public class User {
 	private final int initQuestionCounter=10; 
 	
 	@Transient
-	private final int goldRank=2;
+	private final int goldRank=10;
 	
 	@Transient
-	private final int difficultyRank=2; 
+	private final int difficultyRank=30; 
 	
 	@Transient
 	private final int initNumberOfLives=3; 
@@ -164,18 +164,8 @@ public class User {
 		this.actualQuestions=initQuestionCounter; 
 		this.listOfTheMistakenWords = null;
 	}
-
-	public int getWinsEasy() {
-		return winsEasy;
-	}
-
-	public int getWinsMedium() {
-		return winsMedium;
-	}
-
-	public int getWinsHard() {
-		return winsHard;
-	}
+	
+	/**GETTERS AND SETTERS*/
 
 	public int getId() {
 		return id;
@@ -188,6 +178,31 @@ public class User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public int getActualQuestions() {
+		return actualQuestions;
+	}
+
+	public int getLives() {
+		return lives;
+	}
+	
+	
+	public int getInitQuestionCounter() {
+		return initQuestionCounter;
+	}
+
+	public int getGoldRank() {
+		return goldRank;
+	}
+
+	public int getDifficultyRank() {
+		return difficultyRank;
+	}
+
+	public int getInitNumberOfLives() {
+		return initNumberOfLives;
 	}
 
 	public int getPhrasalVerbPoints() {
@@ -222,150 +237,60 @@ public class User {
 		return rightAnswersCounter;
 	}
 
-	public int getActualQuestions() {
-		return actualQuestions;
+	public int getWinsEasy() {
+		return winsEasy;
 	}
 
-	public int getLives() {
-		return lives;
+	public int getWinsMedium() {
+		return winsMedium;
 	}
-	
+
+	public int getWinsHard() {
+		return winsHard;
+	}
+
 	public boolean isPhrasalVerbs_Gold() {
 		return phrasalVerbs_Gold;
 	}
 
-
 	public boolean isCollocations_Gold() {
 		return collocations_Gold;
-	}
-
-	public void setCollocations_Gold(boolean collocations_Gold) {
-		this.collocations_Gold = collocations_Gold;
 	}
 
 	public boolean isNouns_Gold() {
 		return nouns_Gold;
 	}
 
-	public void setNouns_Gold(boolean nouns_Gold) {
-		this.nouns_Gold = nouns_Gold;
-	}
-
 	public boolean isAdjectives_Gold() {
 		return adjectives_Gold;
-	}
-
-	public void setAdjectives_Gold(boolean adjectives_Gold) {
-		this.adjectives_Gold = adjectives_Gold;
 	}
 
 	public boolean isSentences_Gold() {
 		return sentences_Gold;
 	}
 
-	public void setSentences_Gold(boolean sentences_Gold) {
-		this.sentences_Gold = sentences_Gold;
-	}
-
 	public boolean isAdverbs_Gold() {
 		return adverbs_Gold;
 	}
 
-	public void setAdverbs_Gold(boolean adverbs_Gold) {
-		this.adverbs_Gold = adverbs_Gold;
-	}
-
-	public boolean isInformaticVocabulary() {
+	public boolean isInformaticVocabulary_Gold() {
 		return informaticVocabulary_Gold;
 	}
 
-	public void setInformaticVocabulary(boolean informaticVocabulary) {
-		this.informaticVocabulary_Gold = informaticVocabulary;
-	}
-
-	public int getInitQuestionCounter() {
-		return initQuestionCounter;
-	}
-
-	public int getInitNumberOfLives() {
-		return initNumberOfLives;
-	}
-	
-
 	public boolean isNoble() {
 		return noble;
-	}
-
-	public void setNoble(boolean noble) {
-		this.noble = noble;
 	}
 
 	public boolean isBaron() {
 		return baron;
 	}
 
-	public void setBaron(boolean baron) {
-		this.baron = baron;
-	}
-
 	public boolean isKing() {
 		return king;
 	}
 
-	public void setKing(boolean king) {
-		this.king = king;
-	}
-
 	public boolean isDemigod() {
 		return demigod;
-	}
-
-	public void setDemigod(boolean demigod) {
-		this.demigod = demigod;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setPhrasalVerbPoints(int phrasalVerbPoints) {
-		this.phrasalVerbPoints = phrasalVerbPoints;
-	}
-
-	public void setCollocationsPoints(int collocationsPoints) {
-		this.collocationsPoints = collocationsPoints;
-	}
-
-	public void setNounsPoints(int nounsPoints) {
-		this.nounsPoints = nounsPoints;
-	}
-
-	public void setAdjectivesPoints(int adjectivesPoints) {
-		this.adjectivesPoints = adjectivesPoints;
-	}
-
-	public void setSentencesPoints(int sentencesPoints) {
-		this.sentencesPoints = sentencesPoints;
-	}
-
-	public void setAdverbsPoints(int adverbsPoints) {
-		this.adverbsPoints = adverbsPoints;
-	}
-
-	public void setInformaticVocabularyPoints(int informaticVocabularyPoints) {
-		this.informaticVocabularyPoints = informaticVocabularyPoints;
-	}
-
-	public void setAttempts(int attempts) {
-		this.attempts = attempts;
 	}
 
 	public void setWins(int wins) {
@@ -404,7 +329,6 @@ public class User {
 	public void setActualQuestions(int actualQuestions) {
 		this.actualQuestions = actualQuestions;
 	}
-	
 	
 	public List<Word> getListOfTheMistakenWords() {
 		return listOfTheMistakenWords;
@@ -499,8 +423,6 @@ public class User {
 		this.rightAnswersCounter++; 
 	}
 	
-
-
 	
 	private void setRanks() {
 		
