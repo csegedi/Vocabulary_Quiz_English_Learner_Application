@@ -100,6 +100,7 @@ The difficulty ranks are the following:
 * **Demigod Award**: This is the ultimate award the player can earn. The player must get every seven category gold awards and every three difficulty awards to get this rank.
 
 **List of the false Words**:
+
 If the player has given a wrong answer, the application saves the word to the database. After the game, the player can check these words: a menu item can be found on the initial personal page, which shows the player every wrong word from all their games. This list contains every meaning and the example sentence(s) of the false words. The players can read it, and if they feel that they have already memorized that, it can be removed from this list.
 
 
