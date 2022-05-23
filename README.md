@@ -39,6 +39,7 @@ So this function provides a possibility to change the values of the database. Th
 ## The Rules of the quiz
  
  **Members-only!**
+ 
 The quiz game is available only for the registered user. It can be started from the own page of the logged users. If the users push the "Start a new quiz button” they will be directed to the settings of the current game.
 The players can configure the following properties:
 * Difficulty Level (Easy, Medium, Hard)
@@ -46,31 +47,65 @@ The players can configure the following properties:
 * Initial language (English or Hungarian)
 
 **Categories**:
+
 The players can select a category of words. Only the words of the selected category will appear during the quiz. I have defined seven categories for the words, which are the following:
-* phrasal verbs: a group of words that combine a verb with an adverb or a preposition. Together, these words act as a single verb and take on a whole new meaning that's independent of the meanings of the individual words.
-* collocations: a combination of closely related words (for example, „take a rest”, have a shover, „pay attention, etc.
-* nouns: a collection of more complex or abstract nouns
-* adjectives
-* sentences: a collection of expressions often used, which consist of more words (for example: „obtain somebody's appointment to a post”. 
-* adverbs
-* informatic vocabulary: here, I would like to build a collection of the words used only in informatics and programming, even including the ordinary words and expressions that have special meaning in the above-named professional environment. 
+* **phrasal verbs**: a group of words that combine a verb with an adverb or a preposition. Together, these words act as a single verb and take on a whole new meaning that's independent of the meanings of the individual words.
+* **collocations**: a combination of closely related words (for example, „take a rest”, have a shover, „pay attention, etc.
+* **nouns**: a collection of more complex or abstract nouns
+* **adjectives**
+* **sentences**: a collection of expressions often used, which consist of more words (for example: „obtain somebody's appointment to a post”. 
+* **adverbs**
+* **informatic vocabulary**: here, I would like to build a collection of the words used only in informatics and programming, even including the ordinary words and expressions that have special meaning in the above-named professional environment. 
 
- 
-## The Quiz/The Game
+**Difficulty Levels**
 
-  If the users have selected the required properties of the quiz, they can start the current game. In the current version of this application, the users get 10 words. The appearance of the words from the selected category is coincidental. If the user has selected the English as initial language, the words, that appear on the screen are English, and the user has to write the Hungarian meaning of the received word, if the Hungarian language is the selected as initial language, so the user should write the English meaning.
-  
-  The users should be fast because they are pushed for time: The available time depends on the difficulty level (see above). The time is defined by a Cookie („timer”), which has a lifetime (setMaxAge).
-  
-  If the users give a wrong answer, or they are slow (because the time for a question is running out), they will lose a life point. Every user has three life points, and every wrong/slow answer decreases the number of life points. If the lives run out, the game is over. To win the current game the users should give at least 7 right answers to 10 questions. If the users pass the quiz, they get a point in the selected Category.
-  
-  The application register other information about every user: how many times have they started a game (attempts), how many times have they lost or won. All information and data are continuously recorded in a database.
- 
- 
-## Coming soon (planned new features) :
+The player can set the level of the game’s difficulty. There are in the game three difficulty levels; these are the following:
 
-**Ranks and awards:** the users can collect points and they can reach ranks and awards after the seized points. This isn’t part of the application currently, but it will come as soon as possible.
+* **Easy**: the player has 15 seconds to pick the correct answer 
+* **Medium**: the player has 12 seconds to find the right an answer
+* **Hard**: the player has just 10 seconds
 
-**Practice the mistaken words:** if the user has given a wrong answer, the application collects all these mistaken words. These words will be available for the user, who can start a new own quiz, where only these mistaken words will appear. If the user gives the right answer, the word will be removed from the collection.
+**Initial language**
 
-**Claim the users:** If the current quiz is over, on the last Page will be seen all answers and solutions. If the users are not satisfied with the solution (for example in their mind the answer should be correctly accepted) they can make a sign to the administrator. The administrator will receive the claims, and he will make a correction if it is necessary. 
+There are two options: English or Hungarian. If the players choose English, the words that appear on the screen during the quiz are English. In this case, the players must find the Hungarian meaning of the currently appearing word from the four possible solutions. If the players choose Hungarian, they must select the correct English meaning of the received Word.
+
+**The Quiz/The Game**
+
+If the players have selected the required properties of the quiz, they can start the current game. In the current version of this application, the player gets ten words. The appearance of the words from the selected category is coincidental. If the user has selected the English as the initial language, the word that appears on the screen will be English, and the player must choose the Hungarian meaning of the received word; if the Hungarian language is the selected as initial language, so the player must find the English meaning. 
+
+The player gets four possible answers; one of them is the correct meaning of the word appearing. 
+
+The players should be fast because they are pushed for time: The available time depends on the difficulty level (see above). The time is defined by a Cookie („timer”), which has a lifetime (setMaxAge).
+
+If the players have given a wrong answer or were slow (because the time for a question is running out), they will lose a life point. Every player has three life points, and every wrong/slow answer decreases the number of life points. If the lives run out, the game is over. The player should give at least seven correct answers to 10 questions to win the current round. If the player passes the quiz, they get a point in the selected category and the difficulty level. 
+
+**Player Statistics and Ranks**
+
+The application saves all information about every player: how many times they have started a game (attempts) and how many times they have lost or won. It contains all player's wins in the different categories, and it contains how many wins the player has in the different difficulty levels. All information and data are continuously recorded in a database. 
+The player can read all this information on his initial personal page after login so that they can track the progress. 
+
+There are two kinds of ranks: category awards and difficulty ranks. If the player has completed ten quizzes in a specific category, they get to earn the category award so that the players can get the following category awards:
+* **Phrasal Verbs Gold Award**: complete ten quizzes in the following category: phrasal verbs
+* **Collocation Gold Award**: complete ten quizzes in the following category: collocations
+* **Nouns Gold Award**: complete ten quizzes in the following category: nouns
+* **Adjectives Gold Award**: complete ten quizzes in the following category: adjectives
+* **Sentences Gold Award**: complete ten quizzes in the following category: sentences
+* **Adverbs Gold Award**: complete ten quizzes in the following category: adverbs
+* **Informatic Vocabulary Gold Award**: complete ten quizzes in the following category: informatic vocabulary.
+
+The difficulty ranks are the following:
+* **Noble Award**: win 30 games on easy mode.
+* **Baron Award**: win 30 games on medium mode.
+* **King Award**: win 30 games on hard mode:
+* **Demigod Award**: This is the ultimate award the player can earn. The player must get every seven category gold awards and every three difficulty awards to get this rank.
+
+**List of the false Words**:
+If the player has given a wrong answer, the application saves the word to the database. After the game, the player can check these words: a menu item can be found on the initial personal page, which shows the player every wrong word from all their games. This list contains every meaning and the example sentence(s) of the false words. The players can read it, and if they feel that they have already memorized that, it can be removed from this list.
+
+
+
+
+
+
+
+
