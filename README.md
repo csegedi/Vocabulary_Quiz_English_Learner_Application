@@ -53,7 +53,7 @@ The players can select a category of words. Only the words of the selected categ
 * **collocations**: a combination of closely related words (for example, „take a rest”, have a shover, „pay attention, etc.
 * **nouns**: a collection of more complex or abstract nouns
 * **adjectives**
-* **sentences**: a collection of expressions often used, which consist of more words (for example: „obtain somebody's appointment to a post”. 
+* **sentences**: a collection of expressions often used, which consist of more words (for example: „obtain somebody's appointment to a post”). 
 * **adverbs**
 * **informatic vocabulary**: here, I would like to build a collection of the words used only in informatics and programming, even including the ordinary words and expressions that have special meaning in the above-named professional environment. 
 
