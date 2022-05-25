@@ -5,7 +5,7 @@
 I have to improve my English, so I have decided to create an application that will help me build a huge vocabulary and provide a platform to practice the collected words and expressions.
 This application can allow the users to practice the English language. It contains an enormous vocabulary with example sentences; each word and expression can be found in a database.
 
-The words and expressions are on an advanced level. The users can get at this collection and test their knowledge: this application has a quiz function.
+The words and expressions are on an advanced level. The users can get this collection and test their knowledge: this application has a quiz function.
 This application has been built on the grounds of the MVC pattern, where the control logic consist of three classes. The AdminController class contains the methods which are able to operate the activities of the administrator. The UserController class is responsible for the registration and login processes of the users. The QuizController class operates all functions of the quiz game. This class is responsible for saving every statistic and result to the database. 
 
 This application uses cookies to track the customers' activity and ensure the quiz game's eligible work.
